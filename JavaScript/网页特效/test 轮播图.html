@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <link rel="stylesheet" href="../../font/font_2099015_z5uhbhlgbqn/iconfont.css">
+    <script src="animate.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            position: relative;
+            left: 35%;
+            top: 20%;
+            width: 520px;
+            height: 280px;
+            overflow: hidden;
+        }
+        .box ul {
+            position: absolute;
+            left: 0;
+            width: 3120px;
+            height: 280px;
+
+        }
+        .box ul:hover {
+            animation-play-state: paused;
+        }
+        .box ul li {
+            list-style: none;
+            float: left;
+        }
+
+        .left {
+            display: none;
+            position: absolute;
+            top: 110px;
+            left: 0;
+            width: 30px;
+            height: 60px;
+            background-color: rgba(0,0,0,0.3);
+            text-align:left;
+            cursor: pointer;
+        }
+        .right {
+            display: none;
+            position: absolute;
+            top: 110px;
+            right: 0;
+            width: 30px;
+            height: 60px;
+            background-color: rgba(0,0,0,0.3);
+            text-align:right;
+            cursor: pointer;
+        }
+
+        i {
+            color: #ffffff;
+            line-height: 60px;
+        }
+        .box ol {
+            position: absolute;
+            top: 250px;
+            left: 190px;
+            list-style: none;
+
+        }
+        .box ol li {
+            float: left;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #4c4c4c;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+
+        }
+        .current {
+
+            background-color: #fff;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>
+                <img src="../../img/pic1.webp" alt="">
+            </li>
+            <li>
+                <img src="../../img/pic2.jpg" alt="">
+            </li>
+            <li>
+                <img src="../../img/pic3.png" alt="">
+            </li>
+            <li>
+                <img src="../../img/pic4.jpg" alt="">
+            </li>
+            <li>
+                <img src="../../img/pic5.jpg" alt="">
+            </li>
+        </ul>
+
+        <div class="left">
+            <i class="iconfont icon-angel"></i>
+        </div>
+        <div class="right">
+            <i class="iconfont icon-bell"></i>
+        </div>
+        <ol></ol>
+    </div>
+
+    <script>
+        var b = document.querySelector('.box');
+        var r = document.querySelector('.right');
+        var l = document.querySelector('.left');
+        var u = document.querySelector('ul');
+        var lis = document.querySelectorAll('li');
+        var ol = document.querySelector('ol');
+
+
+        b.addEventListener('mouseover',function () {
+            r.style.display = 'block';
+            l.style.display = 'block';
+            clearInterval(timer);
+            timer = null;
+        })
+        b.addEventListener('mouseleave',function () {
+            r.style.display = 'none';
+            l.style.display = 'none';
+            timer = setInterval(function () {
+                // 手动调用点击事件
+                r.click();
+            },2000)
+        })
+        // 动态创建小圆圈     有几张图片，创建几个小圆圈
+        for (var i = 0; i < lis.length; i++) {
+            // 创建 li
+            var olli = document.createElement('li');
+            // 记录当前小圆圈的索引号
+            olli.setAttribute('index',i);
+            // 将 li 插入到 ol 下
+            ol.appendChild(olli);
+
+            olli.addEventListener('click',function () {
+                for (var j = 0; j < ol.children.length; j++) {
+                    ol.children[j].className = '';
+                }
+                this.className = 'current';
+
+                // 获得小圆圈的索引号
+                var index = this.getAttribute('index');
+
+                // 把小圆圈索引号赋给 小圆圈播放和图片下一张     防止图片与小圆圈不一致问题
+                num = crile = index;
+
+                animate(u,-index * 520);
+            })
+        }
+        // 第一个 li 变为 选定状态
+        ol.children[0].className = 'current';
+
+        // 克隆第一张图片
+        var firstPic = u.children[0].cloneNode(true);
+        u.appendChild(firstPic);
+
+        var num=0;
+        var crile=0;
+        var flag = true;  // 添加节流阀
+        r.addEventListener('click',function () {
+            if (flag) {
+                flag = false;
+                // 无缝滚动
+                // 先克隆第一张图片放到最后，当图片滚动到最后一张时显示
+                // 此时将 盒子 left 设置为 0 迅速移动到前面
+                if (num === u.children.length - 1 ) {
+                    u.style.left = '0px';
+                    num=0;
+                }
+                num++;
+                animate(u,-520 * num,function () {
+                    flag = true;
+                });
+
+                // 声明变量控制小圆圈的位置序号   让图片顺序与小圆圈的位置相同
+                crile++;
+                if(crile === ol.children.length){
+                    crile=0;
+                }
+                crileChange();
+            }
+        })
+
+        // 点击左侧按钮  实现左移
+        l.addEventListener('click',function () {
+            if(flag){
+                flag = false;
+                if (num === 0 ) {
+                    num = u.children.length - 1;
+                    u.style.left = - num * 520 + 'px';
+
+                }
+                num--;
+                animate(u,-520 * num,function () {
+                    flag = true;
+                });
+
+                // 声明变量控制小圆圈的位置序号   让图片顺序与小圆圈的位置相同
+                crile--;
+                if(crile < 0){
+                    crile = ol.children.length-1;
+                }
+                crileChange();
+            }
+        })
+        function crileChange() {
+            for (var i = 0; i < ol.children.length; i++) {
+                ol.children[i].className = '';
+            }
+            ol.children[crile].className = 'current';
+        }
+
+
+        // 自动播放轮播图
+        var timer = setInterval(function () {
+            // 手动调用点击事件
+            r.click();
+        },2000)
+
+        // 节流阀
+        // 当上一个函数动画内容执行完毕，再去执行下一个函数动画，让事件无法连续触发
+        // 思路：利用回调函数，添加一个变量控制，锁住函数和解锁函数
+        // 开始设置变量 var flag = true;
+        // if(flag){flag=false,do something}    关闭水龙头
+        // 利用回调函数 动画执行完毕    flag = true    打开水龙头
+
+    </script>
+</body>
+</html>

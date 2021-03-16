@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document 事件对象</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: #9a6e3a;
+        }
+        ul {
+            width: 100px;
+            height: 100px;
+            background-color: palevioletred;
+        }
+        ul li {
+            width: 100px;
+            height: 30px;
+            background-color: darkseagreen;
+        }
+    </style>
+</head>
+<body>
+    <div>奥利给</div>
+    <ul>
+        <li>奥利给</li>
+        <li>奥利给</li>
+        <li>奥利给</li>
+    </ul>
+    <a href="https://www.baidu.com">百度</a>
+    <script>
+        /*
+            事件对象 ： 事件发生后，跟事件相关的一系列信息数据的集合都放在这个对象里面，这个就是事件对象 event(e)，它有很多属性和方法
+                eventTarget.onclick = function(event) {}
+                eventTarget.addEventListener = function(event) {}
+                    * event 为形参，不惜要传递实参过去，注册事件时，event 对象会被系统自动创建，并依次传给处理函数
+
+            事件对象常见属性和方法：
+                * e.target   返回触发事件的对象           this  返回绑定事件的对象
+                * e.type   返回事件的类型
+                * e.preventDefault()   阻止默认事件(行为)  例 让链接不跳转
+                * e.stopPropagation    阻止冒泡
+
+        */
+
+        var divs = document.querySelector('div');
+        var u = document.querySelector('ul');
+        var a = document.querySelector('a');
+        divs.addEventListener('click',function (e) {
+            console.log(e.target); // 返回触发事件对象 div
+        })
+        divs.addEventListener('click',function (e) {
+            console.log(e.type); // 返回事件类型  click
+        })
+
+        u.addEventListener('click',function (e) {
+            console.log(e.target);  // 点击谁返回谁
+            console.log(this);  // 返回 ul
+        })
+
+        a.addEventListener('click',function (e) {
+            e.preventDefault();
+        })
+    </script>
+</body>
+</html>

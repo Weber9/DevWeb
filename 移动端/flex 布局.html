@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex 布局</title>
+    <style>
+        /*
+            flex 布局(flexible box) 弹性布局
+                通过给 父盒子(容器) 添加 flex 属性 控制 子盒子(项目) 的位置和排列方式
+
+              常见父元素属性：
+                * flex-direction: 设置主轴的方向
+                   flex布局中，分为主轴和侧轴两个方向，同样的叫法有：行和列、x轴 和 y轴
+                   默认主轴方向是 x轴方向，水平向右    侧轴方向是 y轴方向，垂直向下
+                   属性值：   决定主轴的方向，侧轴随之改变
+                      row             默认值从左到右
+                      row-reverse     从右往左
+                      column          从上到下
+                      column-reverse  从下到上
+
+                * justify-content: 设置 主 轴上的子元素排列方式
+                   属性：  一定要确定主轴是哪个
+                     flex-start        默认从头部开始   如果主轴是 X轴，则从左到右
+                     flex-end          从尾部开始排列
+                     center            从主轴居中对齐
+                     space-around      平分剩余空间
+                     space-between     先两边贴边，再平分剩余空间
+
+                * flex-warp: 设置子元素是否换行
+                   属性：
+                     nowrap            默认值，不换行
+                     warp              换行
+                * align-content: 设置侧轴上的子元素的排列方式（多行）
+                   属性：   适用于 子元素存在 换行(多行) 时，单行下没有效果
+                     flex-start            默认值  在侧轴的头部开始排列
+                     flex-end              在侧轴的尾部开始排列
+                     center                在侧轴中间显示
+                     space-around          子项在侧轴平分剩余空间
+                     space-between         子项在侧轴先分布在两头，再平分剩余空间
+                     stretch               设置子项元素高度(子元素不能设置高度)  平分父元素高度
+
+                * align-item: 设置侧轴上的子元素排列方式（单行）
+                   属性：  子项为单项的时候使用    多行下没有效果
+                   flex-stat          从上到下
+                   flex-end           从下到上
+                   center             垂直居中
+                   stretch            拉伸(默认值)   将子元素拉伸与父元素等高，设置时子元素不能右高度
+                * flex-flow: 符合属性，同时设置 flex-direction 和 flex-wrap
+                   flex-flow: 换行 主轴;
+
+              常见子属性：
+                * flex  定义子项目分配剩余空间，用flex来表示占多少 份数
+                    flex: number;
+
+                * align-self    控制子项自己再侧轴上的排列方式
+                    允许单个项目和其它项目不一样的对齐方式，可覆盖 align-items 属性
+                    默认为 auto   继承父元素的 align-items 属性，如果没有父元素，则等同于 stretch
+
+                * order 定义项目的排列顺序
+                    数值越小，排列越靠前，默认为 0
+        */
+
+        div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            align-content: space-between;
+            width: 80%;
+            height: 300px;
+            background-color: #0086b3;
+        }
+        div span {
+
+            width: 250px;
+            height: 100px;
+            background-color: #55a532;
+        }
+
+        p {
+            display: flex;
+            width: 300px;
+            height: 100px;
+            background-color: #9a6e3a;
+            margin: 150px auto;
+        }
+
+        p i:nth-child(1){
+            width: 50px;
+            height: 50px;
+            background-color: #b3d4fc;
+        }
+        p i:nth-child(2){
+            flex: 1;
+            align-self: flex-end;
+            order: -1;
+            height: 50px;
+            background-color: #666666;
+        }
+        p i:nth-child(3){
+            width: 50px;
+            height: 50px;
+            background-color: #DD4A68;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span>1</span>
+        <span>1</span>
+        <span>1</span>
+        <span>1</span>
+        <span>1</span>
+        <span>1</span>
+        <span>1</span>
+        <span>1</span>
+    </div>
+
+    <p>
+        <i>1</i>
+        <i>2</i>
+        <i>3</i>
+    </p>
+</body>
+</html>

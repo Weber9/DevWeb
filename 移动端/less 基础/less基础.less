@@ -1,0 +1,30 @@
+/*
+  变量    @ 变量名: 值；
+    命名规则： 必须有@为前缀
+             不能包含特殊字符
+             不能以数字开头
+             大小写敏感
+     运算(加减乘除)： 两个不同的单位的值运算，运算结果取第一个值的单位
+
+*/
+@color: pink;
+
+html {
+  font-size: 10px * 5;
+}
+div {
+  width: 3rem + 3;
+  height: 3rem + 2;
+  background-color: @color;
+  // less嵌套 子元素的样式可以直接写到父元素的黎曼
+  p {
+    width: 2rem;
+    height: 2rem;
+    font-size: .5rem;
+    background-color: #ee9900;
+  }
+  // 如果有伪类、交集选择器、伪元素选择器，需要在前面加 &
+  &:hover p {
+    background-color: #DD4A68;
+  }
+}

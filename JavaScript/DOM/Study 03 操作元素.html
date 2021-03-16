@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作元素</title>
+    <style>
+        div {
+            width: 200px;
+            height: 40px;
+            line-height: 30px;
+            background-color: #000000;
+            color: #59ff00;
+        }
+    </style>
+</head>
+<body>
+<button>显示时间</button>
+<div></div>
+<hr />
+<button id="1">图片1</button>
+<button id="2">图片2</button>
+<img src="0.png" alt="战斗" title="战斗">
+<hr />
+<button id="btn">修改表单内容</button>
+<input type="text" name="text" value="点一下">
+<script>
+    /*  样式操作
+
+            修改元素内容
+                * element.innerText  从起始位置到终止位置的内容，但它会去除 html 标签，同时空格和换行也会去掉
+
+                * element.innerHTNL  起始位置到种植位置的全部内容，包括 html 标签，同时保留空格和换行
+
+         * 表单里的文字内容用 value 修改
+         * 如果想让某个表单被禁用，不能再点击  disabled
+
+            样式属性操作 ：  元素大小、颜色、位置等
+                * element.style     行内样式操作
+                * element.className    类名样式操作
+                        className 会覆盖之前元素的类名
+    */
+
+   // 点击按钮 div 里的内容发生变化
+    var button = document.querySelector('button');
+    var div = document.querySelector('div');
+    button.onclick = function () {
+        div.innerHTMl = '傻逼';
+    }
+    div.innerHTML = getDate();
+    function getDate() {
+        var date = new Date();
+        return date.toLocaleString()
+    }
+
+    var btn = document.getElementById('1');
+    var btn2 = document.getElementById('2');
+    var img = document.querySelector('img');
+
+    btn.onclick = function () {
+        img.src = '0.png';
+        img.title="战斗"
+    }
+    btn2.onclick =function () {
+        img.src = '../../PC%20端/timg.jpg';
+        img.title= "西湖";
+    }
+
+    // 表单元素更改
+    var btn3 = document.getElementById('btn');
+    var input = document.querySelector('input');
+    btn3.onclick = function () {
+        input.value = '玩一年，装备不花一分钱'
+        // input.disabled = true ;     将表单内容锁住，不可更改
+    }
+    var s = input.getAttribute('type');
+    console.log(s);
+</script>
+</body>
+</html>

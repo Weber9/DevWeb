@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rem适配布局</title>
+    <style>
+        /*
+            em 单位   相对单位  当元素自身没有单位时，会继承父元素的字体大小
+            rem(root em)  rem 的基准相对于 html 元素的字体大小
+              例 页面 font-size = 12px;   2rem = 24px
+            优点：可以通过修改 html 里面的文字大小来改变页面中元素的大小可以整体控制
+
+            媒体查询： Media Query
+               * 使用@media查询，可以针对不同的媒体定义不同的样式
+               * @media 可以针对不同的屏幕尺寸设置不同的样式
+               * 当你重置浏览器大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面
+               * 移动端设备基本都在使用多媒体查询
+            语法规范：
+               @media mediatype and|not|only (media feature){ css-code  }
+                  * 用 @media 开头
+                  * mediatype 媒体类型
+                      all  用于所有设备      print  用于打印机和打印预览    scree  用于移动设备
+                  * 关键字
+                      and 将多个媒体特性连接到一起
+                      not 排除某个媒体特性    可以省略
+                      only 指定某个特定的媒体特性  可以省略
+                  * media feature 媒体特性,必须有小括号
+
+            动态设置 html 标签 字体大小
+                 ① 规定设计稿大小 例 750px
+                 ② 将屏幕划分为 15 等份 (按需求划分没有标准)
+                 ③ 每一份作为 html 大小 750px / 15 = 50px
+                 ④ 再 320px 设备时，字体大小为 320px / 15 = 21.33px
+                 ⑤ 页面元素大小 / 不同的 html 字体大小 的比例相同
+            元素大小的取值方法：
+                 ① 页面元素的 rem值 = 页面元素值(px) / (屏幕宽度 / 划分的份数)
+                 ② 屏幕宽度 / 划分的份数 = html 字体的大小
+                 ③ 或 页面元素的 rem值 = 页面元素值(px) / html 字体大小
+
+        */
+
+        /* 媒体查询 */
+        @media all and (min-width: 500px){
+            html {
+                font-size: 50px;
+            }
+        }
+        @media all and (min-width: 900px) {
+            html {
+                font-size: 100px;
+            }
+        }
+
+
+        .top {
+            height: 1rem;   /* 1rem = 1 * html字体大小 px     */
+            font-size: 0.5rem;
+            color: #2b2b2b;
+            background-color: #c2ee42;
+            text-align: center;
+            line-height: 1rem;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="top"> 点击我 </div>
+</body>
+</html>

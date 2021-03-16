@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位</title>
+    <style>
+        /* 定位：将盒子定在某一位置，所以定位也是摆放盒子，按照定位的方式移动盒子
+               定位=定位模式 + 边偏移
+               子绝父相：子盒子是绝对定位，父盒子得用相对定位 (因为父亲需要占有位置，子盒子不需要占有位置)
+               * 定位模式： 用于指定一个元素的定位方式。
+                    position: static(静态定位)/relative(相对定位)/absolute(绝对定位)/fixed(固定定位)/sticky(粘性定位)
+                      * 1、行内元素添加绝对或者固定定位，可以直接设置亮度和宽度
+                        2、块级元素添加绝对或者固定定位，如果不给宽度或者高度，默认大小是内容的大小
+                        3、浮动元素、绝对定位(固定定位)元素的都不会触发外边距合并的问题
+                        4、浮动元素只会压住它下面的标准流，但不会压住标准流盒子的里面的文字(图片)，绝对定位会压住下面标准流的所有内容
+
+                        * 相对定位：position: relative;
+                            1、移动位置的时候参照点是自己原来的位置
+                            2、原来在标准流的位置继续占有（不脱标，继续保留原来的位置）
+                        * 绝对定位：元素在移动位置的时候，相对于祖先元素来说  position:absolute;
+                            1、如果没有祖先元素或者祖先元素没有定位，则以浏览器为准定位
+                            2、如果祖先元素有定位，则以最近一级的有定位祖先元素为参考点移动位置
+                            3、绝对定位不占有原先的位置(脱标)
+                        * 固定定位：将元素固定到浏览器的可视窗口   position: fixed;
+                            1、以浏览器的可视窗口为参照点移动元素(与父元素没有任何关系)
+                            2、固定定位不占有原先的位置
+                           小技巧：将标签固定到版心的右侧
+                                 1、让固定定位的盒子 left:50%; 移动到版心中央
+                                 2、让固定定位的盒子 margin-left: 版心宽度的一般;  移到版心的右侧
+                        * 定位叠放次序：z-index: 数字;    控制盒子的前后次序
+                            1、数值可以是正、负整数或0，默认为auto，数值越大，盒子越靠上
+                            2、如果属性值相同，按照书写顺序，后来居上
+                            3、只有定位的盒子才有该属性
+               * 边偏移：决定一个元素的最终位置
+                    top：顶部偏移量，定义元素于其父元素上边线的距离
+                    bottom：底部偏移量，定义元素于其父元素下边线的距离
+                    left：左侧偏移量，定义元素于其父元素左边线的距离
+                    right：右侧偏移量，定义元素于其父元素右边线的距离
+
+        */
+        .grandfather {
+            width: 400px;
+            height: 400px;
+            background-color: #000000;
+        }
+        .father {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            position: relative;
+        }
+        .son {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+        .banxin {
+            width: 600px;
+            height: 800px;
+            background-color: purple;
+            margin: 0 auto;
+        }
+        .daohang1 {
+            width: 100px;
+            height: 200px;
+            background-color: red;
+            position: fixed;
+            left: 50%;
+            margin-left: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="grandfather">
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</div>
+
+<hr />
+<div class="banxin">
+    <div class="daohang1"></div>
+</div>
+
+</body>
+</html>

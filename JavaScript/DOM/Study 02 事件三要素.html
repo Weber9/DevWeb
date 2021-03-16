@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+<body>
+    <button id="btn" >点一下</button>
+    <p>点一下，玩一年，装备不花一分钱！</p>
+    <script>
+        /*
+            事件由三部分组成，事件源  事件类型   事件处理程序  称为事件三要素
+                事件源：事件被触发的对象   谁
+                事件类型：如何触发    什么事件
+                事件处理程序：通过一个函数赋值的方式
+        */
+
+        // 点击按钮，弹出对话框
+        var btn = document.getElementById('btn');
+        btn.onclick = function () {
+            alert("玩一年");
+        }
+        document.addEventListener('contextmenu',function (e) {
+            e.preventDefault();
+        })
+        document.addEventListener('selectstart',function (e) {
+            e.preventDefault();
+        })
+    </script>
+</body>
+</html>

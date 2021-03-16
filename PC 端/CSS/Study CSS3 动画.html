@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3 动画</title>
+    <style>
+        /*
+            动 画
+              制作动画分为两步：
+                1、先定义动画
+                    @keyframes 动画名称 {
+                        0% {
+                            初始状态
+                        }
+                        100% {
+                            结束状态
+                        }
+                    }
+
+                2、再使用(调用)动画
+                    animation-name: 动画名称;
+                    animation-duration: 动画时间;
+                    animation-timing-function: ease/linear(匀速)/steps(步长)分步完成动画);   运动曲线
+                    animation-delay: 何时开始;   默认为 0s
+                    animation-iteration-count: 次数;  规定动画执行次数 默认为 1     无限 infinite
+                    animation-direction: normal/alternate(逆播放)     是否反方向执行
+                    animation-fill-mode: backwards(起始状态)/forwards(结束状态)  动画执行后停留位置
+                    animation-play-state:running/paused(停止)   规定动画是否正在运行或停止   与鼠标事件配合使用
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            /* css3盒子模型 */
+            box-sizing: border-box;
+        }
+        body {
+            background-color: darkseagreen;
+        }
+        @keyframes move {
+            0% {
+                transform: translateX(0);
+
+            }
+            100% {
+                transform: translateX(500px);
+                width: 600px;
+                
+            }
+        }
+        span {
+            display:block;
+            overflow: hidden;
+            width: 0px;
+            height: 100px;
+            font-size: 30px;
+            white-space: nowrap;
+            background-color: #0086b3;
+            animation-name: move ;
+            animation-duration: 8s;
+            animation-timing-function: steps(20);
+            animation-iteration-count: infinite;
+            animation-direction:alternate;
+        }
+        span:hover {
+            animation-play-state: paused;
+        }
+
+        /* 奔跑动画 */
+        .frame {
+            width: 1920px;
+            height: 600px;
+            padding-top: 350px;
+            padding-left: 300px;
+            background: url("../../img/ft2.png") no-repeat;
+
+        }
+        .frame .f1 {
+            float: left;
+            width: 200px;
+            height: 180px;
+            margin-top: 32px;
+            background: url("../../img/wukong.png") no-repeat;
+            animation: wu 1s steps(8) infinite ;
+        }
+        .frame .f2 {
+            float: left;
+            width: 200px;
+            height: 180px;
+            margin-top: 35px;
+            background: url("../../img/bajie.png") no-repeat;
+            animation: wu 1s steps(8) infinite ;
+        }
+        .frame .f3 {
+            float: left;
+            width: 170px;
+            height: 240px;
+            background: url("../../img/tangseng.png") no-repeat;
+            animation: tang 1s steps(8) infinite ;
+        }
+        .frame .f4 {
+            float: left;
+            width: 210px;
+            height: 200px;
+            margin-top: 30px;
+            background: url("../../img/shaseng.png") no-repeat;
+            animation: sha 1s steps(8) infinite ;
+        }
+
+        @keyframes wu {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -1600px 0;
+            }
+        }
+        @keyframes tang {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -1360px 0;
+            }
+        }
+        @keyframes sha {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -1680px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <span>我的名痣叫老八，万人称为美食家</span>
+    <hr />
+    <div class="frame">
+        <div class="f1"></div>
+        <div class="f2"></div>
+        <div class="f3"></div>
+        <div class="f4"></div>
+    </div>
+</body>
+</html>

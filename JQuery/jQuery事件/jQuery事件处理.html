@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery事件处理</title>
+    <script src="../jQuery.min.js"></script>
+
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: #DD4A68;
+        }
+        .current {
+            background-color: #c2ee42;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <ul>
+        <li>哈哈哈哈哈哈哈哈</li>
+        <li>哈哈哈哈哈哈哈哈</li>
+        <li>哈哈哈哈哈哈哈哈</li>
+    </ul>
+    <ol>
+
+    </ol>
+    <script>
+        /*
+            绑定多个事件 on()
+                element.on(events,[selector],fn)
+                   1、events：一个或多个用空格分隔的事件类型，如“click”或“keydown”
+                   2、selector：元素的子元素选择器
+                   3、fn：回调函数 即绑定在元素身上的监听函数
+
+            解除绑定事件 off()    移除通过 on() 方法添加的事件处理程序
+                $("p").off()    解绑p元素所有事件处理程序
+                $("p").off("click")    解绑p元素上面的点击事件
+                $("ul").off("click","li")    解绑事件委托
+
+            只触发一次事件  one()
+
+            自动触发事件
+                1、 element.事件    简写形式
+                2、 element.trigger("事件")    自动触发模式
+                3、 element.triggerHandler("事件")     不会触发事件的默认行为
+
+
+         */
+        $(function (){
+
+            // 绑定多个事件处理程序
+            /*$("div").on({
+                mouseenter: function () {
+                    $(this).css("background","skyblue");
+                },
+                click: function () {
+                    $(this).css("background","green");
+                },
+                mouseleave: function () {
+                    $(this).css("background","yellow");
+                }
+            })*/
+
+            // 处理事件程序相同
+            $("div").on("mouseenter mouseleave" ,function () {
+                $(this).toggleClass("current");
+            })
+
+            // 事件委托  通过 冒泡原则 只给父元素添加事件，当执行到 子元素，子元素向上冒泡找对应触发事件
+            $("ul").on("mouseenter li",function () {
+                $(this).css("background","red");
+            })
+
+            // on 可以给动态创建的元素绑定事件
+            $("ol").on("click li",function () {
+                $(this).css("color","purple");
+            })
+            var li = $("<li>我的名字叫老八</li>");
+            $("ol").append(li);
+        })
+    </script>
+</body>
+</html>

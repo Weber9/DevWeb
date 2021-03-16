@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子模型</title>
+    <style>
+        /* 盒子模型
+               * 边框：设置元素的边框
+               复合写法： border:  粗细 样式 颜色  (顺序可以颠倒)
+                            * border-width  定义边框粗细，单位为px
+                            * border-style  边框的样式
+                                * solid 实线边框    dashed 虚线边框    dotted  点线边框
+                            * border-color  边框的颜色
+                            * border-collapse  控制控制浏览器绘制表格边框的方式
+                                   collapse 表示相邻边框合并一起
+                    * 内边距： padding  设置内边距，即边框与内容之间的距离
+                        padding-left(左)/right(右)/top(上)/bottom(下)
+                        padding:5px;   1个值，上下左右都为5
+                        padding:5px 10px;   2个值，上下为5 左右为10
+                        padding:5px 10px 20px;    3个值，上内边距为5 左右为10 下为20
+                        padding:5px 10px 20px 30px;   4个值，上是5 右是10 下是20 左是30
+                      注：若定义盒子时未设置 宽(width) 高(height) 属性，设置内边距不会撑开盒子
+                    * 外边距： margin  设置外边距，即盒子与盒子之间的距离
+                        margin-left(左)/right(右)/top(上)/bottom(下)
+                        margin:5px;   1个值，上下左右都为5
+                        margin:5px 10px;   2个值，上下为5 左右为10
+                        margin:5px 10px 20px;    3个值，上外边距为5 左右为10 下为20
+                        margin:5px 10px 20px 30px;   4个值，上是5 右是10 下是20 左是30
+                        应用：让盒子水平居中 盒子必须指定宽度（width） 盒子左右的外边距都设置为 auto
+                            常见写法：margin-left:auto; margin-right:auto;
+                                    marin:auto;          margin:0 auto; (最常见)
+                        行内元素或行内块元素水平居中，给其父元素加入 text-align="center" 即可
+
+                    清除内外边距：
+                        * { padding: 0; margin: 0 }   CSS 首行代码，先将页面内边框清除，再布局
+
+                    * 圆角边框： border-radius   用于设置元素的外边框圆角
+                            语法： border-radius:length;
+                                参数可以是数值或百分比形式；正方形变圆数值边长的一半，矩形变圆，数值为高度的一半
+              * 盒子阴影： 为盒子添加阴影效果
+                    语法：box-shadow: h-shadow v-shadow blur spread color inset ;
+                    h-shadow：水平阴影位置，可为负值
+                    v-shadow：垂直阴影位置，可为负值
+                    blur：阴影模糊状态
+                    spread：阴影尺寸     color：阴影颜色    inset：内部阴影
+               */
+        div {
+            width: 200px;
+            height: 200px;
+            /*border-width: 5px;
+              border-style: solid;
+              border-color: green;*/
+            border: 20px solid green;
+            padding: 5px 10px 20px 30px;
+            margin:0 auto;
+            /*border-radius: 50%;*/
+        }
+        /* 鼠标放到盒子上出现阴影 */
+        div:hover {
+            box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.3);
+        }
+        .father {
+            width: 200px;
+            height: 300px;
+            background-color: green;
+            overflow: hidden;  /* 解决两个嵌套关系的块元素垂直外边距的塌陷问题(父块会随着子块一起改变样式)*/
+        }
+        .son {
+            width: 200px;
+            height: 300px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+<div>二营长，你他娘的意大利炮呢。二营长，你他娘的意大利炮呢。二营长，你他娘的意大利炮呢。</div>
+
+<div class="father">
+    <div class="son"></div>
+</div>
+<hr />
+<div></div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素滚动 scroll</title>
+    <style>
+        div {
+            width: 150px;
+            height: 200px;
+            background-color: #b3d4fc;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div>奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给
+        奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给
+        奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给
+        奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给
+        奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给
+        奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给奥里给</div>
+    <script>
+        /*       常用于获取滚动距离
+            scroll : 动态获得该元素内容的大小、滚动距离
+               element.scrollTop       返回被卷去的上侧距离，返回数值不带单位
+               element.scrollLeft      返回被卷去的左侧距离，返回数值不带单位
+               element.scrollWidth     返回自身实际的宽度，不含边框，返回数值不带单位
+               element.scrollHeight     返回自身实际的高度，不含边框，返回数值不带单位
+
+               window.scroll(x,y)    滚动到页面某个位置   不加单位
+
+            页面卷去内容 ：
+                window.pageYOffset  返回卷去上侧距离
+                window.pageXOffset  返回卷去左侧距离
+
+        */
+        var divs = document.querySelector('div');
+        divs.addEventListener('scroll',function () {
+            console.log(divs.scrollTop);
+        })
+    </script>
+</body>
+</html>

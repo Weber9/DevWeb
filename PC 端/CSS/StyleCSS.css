@@ -1,0 +1,5 @@
+/* CSS 文件中不需要标签，直接写样式 */
+div {
+    color: #8a08fc;
+    font: italic 700 20px "Microsoft YaHei UI Light" ;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态表格</title>
+    <style>
+        table {
+            width: 500px;
+            margin: 0 auto;
+            border-collapse: collapse;   /* collapse 表示相邻边框合并一起*/
+            text-align: center;
+        }
+        td,
+        th{
+            border: 1px solid black;
+        }
+        thead tr {
+            height: 40px;
+            background-color: #af5b26;
+        }
+    </style>
+</head>
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        var datas = [{     // 创建一个数组动态存储数据
+            name: '李云龙',
+            subject: 'JavaScript',
+            score: '100'
+        },{
+            name: '魏和尚',
+            subject: 'JavaScript',
+            score: '100'
+        },{
+            name: '孔二愣子',
+            subject: 'JavaScript',
+            score: '100'
+        }]
+        // 往 tbody 里创建行   往表格输入数据
+        var tbody = document.querySelector('tbody');
+        for (var i = 0; i < datas.length; i++) {
+            // 创建 行
+            var tr = document.createElement('tr');
+            // 往 tbody 下插入 行
+            tbody.appendChild(tr);
+            // 往 行 里创建 单元格        单元格 个数取决于 对象里面的 属性 个数
+            for (var j in datas[i]) {    // 遍历 对象           //  for(var j in obj){}  遍历对象对象
+                // 创建 单元格                                       j 得到对象属性名
+                var td = document.createElement('td');         //   obj[j] 对象属性值
+                // 往单元格添加数据
+                td.innerHTML = datas[i][j];
+                tr.appendChild(td);
+            }
+            // 创建 删除 单元格
+            var tdd = document.createElement('td');
+            tdd.innerHTML = '<a href="javascript:;">删除</a>';
+            tr.appendChild(tdd);
+        }
+        //  删除操作
+        var as = document.querySelectorAll('a'); 
+        for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function () {
+                // 删除 所在 行
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+        }
+    </script>
+</body>
+</html>

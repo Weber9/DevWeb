@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转木马</title>
+    <style>
+        body {
+            perspective: 1000px;
+        }
+        section {
+            position: relative;
+            width: 240px;
+            height: 180px;
+            margin: 150px auto;
+            transform-style: preserve-3d;
+            animation: rotate 8s linear infinite alternate;
+            background: url("../../img/zhake.png") no-repeat;
+        }
+        @keyframes rotate {
+            0% {
+                transform: translate3d(0,0,0)  rotateY(0);
+            }
+            100% {
+                transform: translate3d(300px,200px,300px) rotateY(360deg);
+            }
+        }
+        /*section:hover {
+            animation-play-state: paused;
+        }*/
+        section div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("../../img/salefenni.png") no-repeat ;
+
+        }
+
+        section div:nth-child(1) {
+            transform: rotateY(0) translateZ(200px);
+        }
+        section div:nth-child(2) {
+            transform: rotateY(60deg) translateZ(200px);
+        }
+        section div:nth-child(3) {
+            transform: rotateY(120deg) translateZ(200px);
+        }
+        section div:nth-child(4) {
+            transform: rotateY(180deg) translateZ(200px);
+        }
+        section div:nth-child(5) {
+            transform: rotateY(240deg) translateZ(200px);
+        }
+        section div:nth-child(6) {
+            transform: rotateY(300deg) translateZ(200px);
+        }
+
+    </style>
+</head>
+<body>
+    <section>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </section>
+
+    <script>
+        var section = document.querySelector('section');
+        var divs = document.querySelectorAll('div');
+        console.log(divs);
+        section.addEventListener('mousemove',function (e) {
+            for (var i = 0; i < divs.length; i++) {
+                divs[i].style.transform = 'rotateY('+i*60+'deg) translateZ(300px)';
+            }
+        })
+        section.addEventListener('mouseout',function (e) {
+            for (var i = 0; i < divs.length; i++) {
+                divs[i].style.transform = 'rotateY('+i*60+'deg) translateZ(200px)';
+            }
+        })
+    </script>
+</body>
+</html>

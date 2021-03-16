@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3新特性</title>
+    <link rel="stylesheet" href="../../font/font_2099015_z5uhbhlgbqn/iconfont.css">
+    <style>
+        /*
+            属性选择器   权重为  10
+               E[att] 选择具有 att 属性的 E 元素
+               E[att="val"] 选择 att 属性且属性值为 val 的 E 元素
+               E[att^="val"] 匹配具有 att 属性且值为 val 开头 的 E 元素
+               E[att$="val"] 匹配具有 att 属性且值为 val 结尾 的 E 元素
+               E[att*="val"] 匹配具有 att 属性且值中 含有 val 的 E 元素
+
+            伪类选择器
+               E:first-child  匹配 父元素 中的 第一个 子元素 E
+               E:last-child  匹配 父元素 中的 最后一个 子元素 E
+               E:nth-child(n)  匹配 父元素 中的 第n个 子元素 E
+                    n 可以为 数字 关键字( even 偶数  odd 奇数) 公式
+                    对父元素里面的所有孩子进行排序，先找第n个孩子，然后查看是否匹配
+
+               E:nth-first-of-child  指定类型 E 的第一个
+               E:nth-last-of-child   指定类型 E 的最后一个
+               E:nth-of-type(n)    指定类型 E 的第 n 个
+
+            伪元素选择器  利用 CSS 创建新标签
+                element::before  在元素内部的前面插入内容
+                element::after   在元素内部的后面插入内容
+
+                    * before 和 after 创建一个元素，但属于行内元素
+                    * 必须有 content 属性
+                    * 权重为 1
+
+            CSS 盒子模型
+                box-sizing:content-box;   盒子大小为 width + padding + border  (默认)
+                box-sizing:border-box;   盒子大小为 width ，不会被其它元素撑开
+        */
+        /* 盒子模型 */
+        .box {
+            width: 300px;
+            height: 300px;
+            border: 20px solid red;
+            padding: 20px;
+            box-sizing: content-box;
+        }
+        p {
+            width: 300px;
+            height: 300px;
+            border: 20px solid red;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        /* 伪类选择器 */
+        div {
+            position: relative;
+            width: 300px;
+            height: 50px;
+            border: 1px solid black;
+        }
+        div::after {
+            position: absolute;
+            right: 10px;
+            top: 15px;
+            display: inline-block;
+            font-family: iconfont;   /* 先引入 字体 */
+            content: '\ea42';
+        }
+        /* 选择器 */
+        input[type="text"] {
+            color: red;
+
+        }
+
+        ul li:nth-child(n+3){
+            color: #0086b3;
+        }
+        ul li:nth-child(2n) {
+            color: #DD4A68;
+        }
+        ul li:nth-of-type(1){
+            color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <input type="text">
+    <input type="password">
+    <hr />
+    <ul>
+        <li>一个孩子1</li>
+        <li>一个孩子2</li>
+        <li>一个孩子3</li>
+        <li>一个孩子4</li>
+        <li>一个孩子5</li>
+    </ul>
+    <hr />
+    <div></div>
+    <hr />
+    <div class="box"></div>
+    <p></p>
+</body>
+</html>

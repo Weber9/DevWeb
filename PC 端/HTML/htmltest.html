@@ -1,0 +1,144 @@
+<!DOCTYPE html>    <!--告诉浏览器使用的 html 版，必须写在第一行-->
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>练习</title>
+    <style>
+        table,
+        td,
+        th {
+            border: 3px solid green;
+        }
+    </style>
+</head>
+<body>
+
+
+<form action="#" method="post">
+    <table border="5" align="center" width="30%">
+        <tr >
+            <td ><lable for="username">用户名</lable></td>
+            <td><input type="text" name="username" placeholder="请输入用户名" id="username" > </td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="password" name="password"></td>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td><input type="email" name="email"></td>
+        </tr>
+        <tr>
+            <td>姓名</td>
+            <td><input type="text" name="realname"></td>
+        </tr>
+        <tr>
+            <td>手机号</td>
+            <td><input type="number" name="telephone"></td>
+        </tr>
+        <tr>
+            <td>性别</td>
+            <td><input type="radio" name="gender" value="male"> 男
+                <input type="radio" name="gender" value="female"> 女</td>
+        </tr>
+        <tr>
+            <td>出生日期</td>
+            <td><input type="date" name="birthday"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center" ><input type="submit" value="注册" ></td>
+        </tr>
+    </table>
+</form>
+
+<hr>
+
+
+<form action="xxx.php" method="post" name="表单">
+    <table align="center" border="1" cellpadding="20" cellspacing="0">
+        <h1 align="center">青春不常在，抓紧谈恋爱</h1>
+        <tr>
+            <td> 性别：<input type="radio" name="sex" id="nan"> <label for="nan">男</label>
+                <input type="radio" name="sex" id="nv"> <label for="nv">女</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                生日：<select name="year" >
+                <option>--请选择年份--</option>
+                <option>2000</option>
+                <option>2001</option>
+                <option>2002</option>
+            </select>
+                <select name="month" >
+                    <option>--请选择月份--</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                </select>
+                <select name="day" >
+                    <option>--请选择日期--</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                所在地区：<input type="text" name="weizhi" value="北京">
+            </td>
+        </tr>
+        <td>
+            婚姻状况：<input type="radio" name="hunyin" id="weihun"><label for="weihun">未婚</label>
+            <input type="radio" name="hunyin" id="yihun"><label for="yihun">已婚</label>
+            <input type="radio" name="hunyin" id="lihun"><label for="lihun">离婚</label>
+        </td>
+        <tr>
+            <td>
+                学历：<input type="text" name="study">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                喜欢的类型：<input type="checkbox" name="hobby" value="模特"> 模特
+                <input type="checkbox" name="hobby" value="学生"> 学生
+                <input type="checkbox" name="hobby" value="人妻"> 人妻
+                <input type="checkbox" name="hobby" value="都喜欢"> 都喜欢
+            </td>
+        </tr>
+        <tr>
+            <td>
+                自我介绍：<textarea name="des" id="ziwojieshao" cols="30" rows="10"> 自我介绍</textarea>
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+                <input type="submit" align="center" value="免费注册">
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+                <input type="checkbox" name="tiaokuan" checked="checked" >我同意注册条款等
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+                <a href="#" >我是会员，立即登录</a>
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+                <h3>我承诺</h3>
+                <ul>
+                    <li>年满18</li>
+                    <li>抱着严肃的态度</li>
+                    <li>真诚寻找另一半</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+</form>
+</body>
+</html>

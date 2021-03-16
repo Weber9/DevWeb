@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>window 对象常见事件</title>
+    <script>
+        /* window 常见事件
+              * 窗口加载事件  当页面的文档内容完全加载后触发该事件
+                    window.onload = function() {}   只能写一次，如果有多个，只执行最后一个
+                    window.addEventListener('load',function(){})
+                    document.addEventListener('DOMContendLoaded',function(){} ) 当DOM加载完成时执行事件 用于图片多的时候
+
+              * 窗口大小事件  浏览器窗口大小发生变化执行该事件
+                    window.onresize = function() {}
+                    window.addEventListener('resize',function(){})
+
+              * 定时器
+                   设置定时器
+                      * window.setTimeout(调用函数(回调函数),延迟的毫秒数);   // window 可省略   单次调用
+                      * window.setInterval(调用函数(回调函数),延迟的毫秒数);    //   重复调用
+                   停止定时器
+                      * window.clearTimeout(定时器名称);   // window 可省略
+                      * window.clearInterval(定时器名称)
+
+        */
+
+
+        // 窗口大小事件
+        window.addEventListener('load',function () {
+            var box = document.querySelector('.box');
+            window.addEventListener('resize',function () {
+                if(window.innerWidth <= 900){  // window.innerWidth  获取当前浏览器窗口宽度
+                    box.style.display = 'none';
+                }
+                else {
+                    box.style.display = 'block';
+                }
+            })
+        })
+
+
+        // 定时器
+        window.addEventListener('load',function () {
+            var btn = document.querySelector('.btn');
+            var time1 = setTimeout(function () {
+                alert("boom ! boom ! boom ! ");
+            },2000);
+
+            btn.addEventListener('click',function () {
+                window.clearTimeout(time1);
+            } )
+
+            // 重复调用
+            // setInterval(function () {
+            //     console.log('持续输出');
+            // },1000);
+        })
+        // 重复调用定时器
+        window.addEventListener('load',function () {
+            var hour = document.querySelector('.hour');
+            var minuit = document.querySelector('.minuit');
+            var second = document.querySelector('.second');
+            var inputTime = +new Date('2020-11-24 00:00:00');  // 返回用户输入时间总的毫秒数
+            countDown();
+            // 开启定时器
+            setInterval(countDown,1000);
+
+            function countDown() {
+                var nowTime = +new Date();   // 返回当前时间
+                var times = (nowTime - inputTime)/1000;  //剩余时间总的秒数
+                // console.log(times);
+                var h = parseInt(times / 60 / 60 % 24);
+                h = h < 10 ? '0' + h : h;
+                hour.innerHTML = h;
+                var m = parseInt(times / 60 % 60);
+                m = m < 10 ? '0' + m : m;
+                minuit.innerHTML = m;
+                var s = parseInt(times % 60);
+                s = s < 10 ? '0' + s : s;
+                second.innerHTML = s;
+            }
+        })
+
+    </script>
+
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: #b3d4fc;
+        }
+        span {
+            float: left;
+            display: block;
+            width: 100px;
+            height: 100px;
+            background-color: #000000;
+            color: #ffffff;
+            font-size: 50px;
+            line-height: 100px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="box"></div>
+    <button class="btn">点击停止计时器</button>
+
+    <span class="hour">1</span>
+    <span class="minuit">2</span>
+    <span class="second">3</span>
+</body>
+</html>

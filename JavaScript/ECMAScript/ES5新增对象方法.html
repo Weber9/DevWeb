@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新增对象方法</title>
+</head>
+<body>
+    <script>
+        /*
+            对象方法
+
+              Object.keys(obj)  获取对象自身所有的属性
+                * 类似于 for...in...
+                * 返回一个有属性名组成的数组
+
+              Object.defineProperty()   定义新属性或修改原有的属性
+                Object.defineProperty(obj,prop,{})
+                  * value: 设置属性的值，默认为 undefined
+                  * writable: 值是否可以重写。   true|false  默认为 false
+                  * enumerable: 目标属性是否可以被枚举(无法遍历)。    true|false  默认为 false
+                  * configurable: 目标属性是否可以被删除或是否可以再次修改特性    true|false  默认为 false
+
+        */
+        var student = {
+            id : 1,
+            name : "李云龙",
+            sex : "男",
+            age : 18
+        };
+        var arr = Object.keys(student);
+        console.log(arr);
+        arr.forEach(function (value, index, array) {
+            console.log(value);
+        })
+
+    </script>
+</body>
+</html>

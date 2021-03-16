@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手风琴效果</title>
+    <script src="../jQuery.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .king {
+            width: 560px;
+            height: 69px;
+            background-color: #b3d4fc;
+        }
+        ul {
+            list-style: none;
+        }
+
+        ul li {
+            position: relative;
+            float: left;
+            width: 69px;
+            height: 69px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        li.show {
+            width: 224px;
+        }
+        .king .show .big {
+            display: block;
+        }
+        .king .show .small {
+            display: none;
+        }
+        .small {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 69px;
+            height: 69px;
+            border-radius: 5px;
+        }
+        .big {
+            display: none;
+            width: 224px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="king">
+        <ul>
+            <li class="show">
+                <img src="image/cheng.jpg" alt="" class="small">
+                <img src="image/chengBig.png" alt="" class="big">
+            </li>
+            <li>
+                <img src="image/gui.jpg" alt="" class="small">
+                <img src="image/guibig.png" alt="" class="big">
+            </li>
+            <li>
+                <img src="image/lao.jpg" alt="" class="small">
+                <img src="image/laoBig.png" alt="" class="big">
+            </li>
+            <li>
+                <img src="image/min.jpg" alt="" class="small">
+                <img src="image/minBig.png" alt="" class="big">
+            </li>
+            <li>
+                <img src="image/yi.jpg" alt="" class="small">
+                <img src="image/yiBig.png" alt="" class="big">
+            </li>
+        </ul>
+    </div>
+
+
+    <script>
+        $(function () {
+
+            $("li").mouseover(function () {
+                // 鼠标经过当前 li 显示大图片
+                $(this).stop().animate({
+                    width: 224
+                }).find(".small").fadeOut().siblings(".big").stop().fadeIn();
+                // 其余兄弟 li 显示小图片
+                $(this).siblings("li").stop().animate({
+                    width: 69
+                }).find(".small").fadeIn().siblings(".big").stop().fadeOut();
+            })
+        })
+    </script>
+</body>
+</html>

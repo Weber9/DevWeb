@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document 常用键盘对象</title>
+</head>
+<body>
+
+    <script>
+        /*
+            常用键盘事件：
+                 keyup:  按键松开时触发
+
+                 keydown:  按键按下时触发
+
+                 keypress:   按键按下时触发，区分字母大小写，但不识别功能键 例 ctrl shift 等
+
+                执行顺序:  keydown --> keypress --> keyup
+
+            键盘事件对象: KeyboardEvent
+                 * e.key    返回按下键盘的值   有兼容性问题
+                 * e.keyCode   返回按下键盘的值的 ASCII值
+
+
+        */
+        document.addEventListener('keyup',function (e) {
+            console.log("弹射起步！！！");
+            console.log(e.key);
+            console.log(e.keyCode);
+        })
+        document.addEventListener('keydown',function () {
+            console.log('按下触发弹射！！！');
+        })
+        document.addEventListener('keypress',function () {
+            console.log('按下触发弹射2！！！');
+        })
+    </script>
+</body>
+</html>

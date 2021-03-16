@@ -1,0 +1,65 @@
+{
+  "id": "2099015",
+  "name": "Web",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1356161",
+      "name": "眼睛-闭",
+      "font_class": "yanjing-bi",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "8361926",
+      "name": "眼睛1",
+      "font_class": "yanjing",
+      "unicode": "e6e1",
+      "unicode_decimal": 59105
+    },
+    {
+      "icon_id": "17333132",
+      "name": "bear",
+      "font_class": "bear",
+      "unicode": "ea42",
+      "unicode_decimal": 59970
+    },
+    {
+      "icon_id": "17333133",
+      "name": "bauble-1",
+      "font_class": "bauble-1",
+      "unicode": "ea41",
+      "unicode_decimal": 59969
+    },
+    {
+      "icon_id": "17333134",
+      "name": "angel",
+      "font_class": "angel",
+      "unicode": "ea43",
+      "unicode_decimal": 59971
+    },
+    {
+      "icon_id": "17333136",
+      "name": "bell",
+      "font_class": "bell",
+      "unicode": "ea44",
+      "unicode_decimal": 59972
+    },
+    {
+      "icon_id": "17333138",
+      "name": "bells",
+      "font_class": "bells",
+      "unicode": "ea45",
+      "unicode_decimal": 59973
+    },
+    {
+      "icon_id": "17333139",
+      "name": "cabin",
+      "font_class": "cabin",
+      "unicode": "ea46",
+      "unicode_decimal": 59974
+    }
+  ]
+}

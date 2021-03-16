@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dom 获取元素</title>
+</head>
+<body>
+<div id="time">2020-09-27</div>
+<ul>
+    <li>好好学习，天天向上1</li>
+    <li>好好学习，天天向上2</li>
+    <li>好好学习，天天向上3</li>
+    <li>好好学习，天天向上4</li>
+    <li>好好学习，天天向上5</li>
+</ul>
+
+<ol id="ol">
+    <li>好好学习，天天挂科</li>
+    <li>好好学习，天天挂科</li>
+    <li>好好学习，天天挂科</li>
+    <li>好好学习，天天挂科</li>
+    <li>好好学习，天天挂科</li>
+</ol>
+
+<div class="box">为什么人要这么的脆弱堕落</div>
+<div class="box">请你打开电视</div>
+<script>
+    /* 获取页面中元素：
+           1、 根据ID 获取
+                 getElementById('id') 方法 ：返回一个元素对象
+                   * 根据标签名获取
+                   * 通过HTML5新增方法获取
+                   * 特殊元素获取
+           2、 根据标签名获取
+                getElementsByTagName('标签名')    返回页面中所有带有此标签名的对象的集合
+                   * 因获取的是对象的一个集合，故进行操作时需遍历
+                   * 得到的元素是动态的
+                element.getElementsByTagName('标签名')  获取某个父元素内部所有指定标签名的子元素
+                   * 父元素必须是单个对象(必须指明是哪一个元素对象)，获取的时候不包括父元素自己
+            // H5 新增方法  i9以上浏览器可用
+           3、 根据类名获取某些元素的集合
+                   document.getElementsByClassName('标签名')
+           4、 document.querySelector('选择器')  返回指定选择器的第一个元素对象，里面的选择器需加符号
+           5、 document.querySelectorAll('选择器')  返回指定选择器的所有对象集合
+
+           6、 获取 body 元素   document.body 返回 body 元素对象
+           7、 获取 html 元素   document.documentElement   返回 html 元素对象
+     */
+
+    // 通过 id 获取对象
+     var timer = document.getElementById('time');
+     console.log(timer);
+     console.log(typeof timer);
+
+     //  console.dir()  打印我们返回的元素对象，更好查看里面的属性和方法
+     console.dir(timer);
+
+     // 通过标签名获取对象
+     var tn = document.getElementsByTagName("li");
+     console.log(tn);
+    for (var i = 0; i < tn.length; i++) {
+        console.log(tn[i]);
+    }
+    // 先通过 id 获取父元素，在通过父元素来获取对象
+    var ol = document.getElementById('ol');
+    var etn = ol.getElementsByTagName("li");
+    console.log(etn);
+    for (var i = 0; i < etn.length; i++) {
+        console.log(etn[i]);
+    }
+
+    // H5 获取元素新方法
+    var qs = document.querySelector('.box');
+    console.log(qs);
+
+    var qsa = document.querySelectorAll('.box');
+    console.log(qsa);
+    var qsa1 = document.querySelectorAll('#ol');
+    console.log(qsa1);
+    // 获取 body 元素
+    var body = document.body;
+    console.log(body);
+    // 获取 html 元素
+    var html = document.documentElement;
+    console.log(html);
+</script>
+</body>
+</html>

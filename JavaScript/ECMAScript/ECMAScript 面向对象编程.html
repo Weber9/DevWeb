@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ECMAScript面向对象编程</title>
+</head>
+<body>
+    <script>
+
+        /*
+            类和对象
+              1、创建 类 不需要带括号
+              2、类 构造方法  constructor(){}   // 类中必须要有
+              3、类中的方法 不需要 function()
+              4、继承 class son extends father
+                  super()   调用父类中的方法
+                  子类在构造函数中使用 super ，必须放到 this 前面 (必须先调用父类的构造方法，再使用子类构造方法)
+              注意：
+                 1、ES6中没有变量提升，必须先定义类，才能通过类实例化对象
+                 2、类里面的共有属性和方法一定要加 this 使用
+                 3、constructor 里面的 this 指向实例对象，方法里面的 this 指向这个方法的调用者
+
+
+
+        */
+
+        class star {
+            constructor(uname,age) {
+                this.uname = uname;
+                this.age = age;
+            }
+            sing() {
+                console.log("我爱黎明");
+            }
+        }
+
+        var lm = new star("lm",40);
+        console.log(lm);
+        console.log(lm.sing());
+    </script>
+</body>
+</html>

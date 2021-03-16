@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过渡</title>
+    <style>
+        /*
+            过渡： transition: 变化的属性 花费时间 运动事件 何时开始
+                变化的属性：想要变化的属性。如果想要所有属性发生变化，加 all
+                花费事件：单位 秒
+                运动曲线：默认ease (可以省略)
+                何时开始：设置延迟触发事件  单位为 秒
+             谁过渡谁添加
+        */
+        div {
+            width: 200px;
+            height: 100px;
+            background-color: #0086b3;
+            transition: width 1s ease 0s,height 1s;
+        }
+        div:hover {
+            width: 400px;
+            height: 500px;
+            background-color: #404040;
+        }
+        img {
+            width: 200px;
+            height: 150px;
+            background-color: #2b2b2b;
+            transition: all 1s;
+        }
+        img:hover {
+            width: 400px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+
+    <img src="../yaoming.jpg" alt="姚明">
+</body>
+</html>

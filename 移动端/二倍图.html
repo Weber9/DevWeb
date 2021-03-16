@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>二倍图</title>
+
+    <style>
+        /*
+            背景缩放   规定背景图像的尺寸
+                background-size: 背景图片宽度 背景图片高度;
+                 * 单位：长度|百分比|cover|contain
+                 * cover 把北京图像扩展至足够大，依使背景图像完全覆盖背景区域
+                 * contain：把背景图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域
+
+        */
+
+        div {
+            width: 500px;
+            height: 500px;
+            border: 2px solid #DD4A68;
+            background: url(".././img/zhake.png") no-repeat;
+            /*background-size: contain;*/
+            /*background-size: cover;*/
+            background-size: 300px 500px;
+        }
+    </style>
+</head>
+<body>
+     <div></div>
+</body>
+</html>

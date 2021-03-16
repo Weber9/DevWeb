@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery事件对象</title>
+    <script  src="../jQuery.min.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+
+        /*
+            事件被触发，就会有事件对象的产生
+            element.on(events,[selector],function(event) {})
+            阻止默认行为：event.preventDefault() 或者 return false
+            阻止冒泡： event.stopPropagation()
+
+            */
+
+        $(function () {
+            $("document").on("click",function () {
+                console.log("我爱你");
+            })
+            $("div").on("click",function (event) {
+                console.log("我爱你");
+                event.stopPropagation();
+            })
+
+        })
+    </script>
+</body>
+</html>

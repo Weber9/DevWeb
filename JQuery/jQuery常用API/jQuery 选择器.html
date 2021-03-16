@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery 选择器</title>
+    <script src="../jQuery.min.js"></script>
+</head>
+<body>
+    <div class="nav">我是div</div>
+    <p>我是p</p>
+    <p id="ppp">我是ppp</p>
+    <ul>
+        <li>我是ul小li</li>
+        <li>我是ul小li</li>
+        <li>我是ul小li</li>
+        <li>我是ul小li</li>
+        <li>我是ul小li</li>
+    </ul>
+    <ol>
+        <li>我是ol小li</li>
+        <li>我是ol小li</li>
+        <li>我是ol小li</li>
+        <li>我是ol小li</li>
+        <li>我是ol小li</li>
+    </ol>
+
+
+<script>
+    /*
+
+        基础选择器    $("选择器")
+           id选择器     $("#id")      获取指定ID的元素
+           全选选择器    $("*")        匹配所有元素
+           类选择器     $(".class")    获取同一类class的元素
+           标签选择器    $("div")      获取同一标签的所有元素
+           并集选择器    $("div,p,li")  选取多个元素
+           交集选择器    $("li.current") 交集元素
+
+        层级选择器
+           子代选择器    $("ul>li")    使用 > 号，获取亲儿子层级的元素；并不会获取孙子层级的元素
+           后代选择器    $("ul li")    使用空格，代表，获取ul下所有li元素，包括子孙等
+
+        隐式迭代    遍历内部DOM元素(伪数组形式存取)过程   给匹配到的所有元素进行循环遍历，不需要循环
+
+        筛选选择器
+           :first      $("li:first")  获取第一个li元素
+           :last       $("li:last")   获取最后一个li元素
+           :eq(index)  $("li:eq(x)")  获取索引号为 x 的元素，索引号从0开始
+           :odd        $("li:odd")    获取索引号为奇数的元素
+           :even       $("li:even:)   获取索引号为偶数的元素
+           parent()    $("li").parent()    查找父级
+           parents("祖先名")      返回指定祖先元素
+           children(selector)    $("ul").children("li")    查找最近一级（亲儿子）
+           find(selector)        $("ul").find("li")        查找所有后代
+           siblings(selector)    $(".first").siblings("li")  查找兄弟节点，不包括自身
+           nextAll([expr])       $(".first").nextAll()      查找当前元素之后所有的同辈元素
+           prevAll([expr])       $(".last").prevAll()       查找当前元素之前所有的同辈元素
+           hasClass(class)       $("div").hasClass("protected")  检查当前元素是否含有某个特定的类，如果有，则返回true
+           eq(index)             $("li").eq(index)              获取索引号为 index 的元素，index从0开始
+
+     */
+
+
+    $(function () {
+        // 基础选择器
+        console.log($(".nav"));
+        console.log($("#ppp"));
+        // 层级选择器
+        console.log($("ul>li"));
+        console.log($("ol>li"));
+        console.log($("ul li"));
+        // 筛选选择器
+        $("ul li:first").css("background","pink");
+        $("ul li:eq(3)").css("background","skyblue");
+        $("ol li:odd").css("background","red");
+        $("ol li:even").css("background","gray");
+    })
+</script>
+</body>
+</html>

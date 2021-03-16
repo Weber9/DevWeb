@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 练习</title>
+    <style>
+        body {
+            font: normal normal 16px/28px "Microsoft YaHei";
+            background-position: center bottom;
+            background-image: url("../../JavaScript/DOM/0.png");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        h1 {
+            font-weight: 700;
+            text-align: center;
+        }
+
+        a {
+            width: 200px;
+            height: 20px;
+            line-height: 40px;    /* 让文字垂直居中 */
+            color: white;
+            font-size: 14px;
+            text-decoration: none;
+            /*text-indent: 2em;*/
+            padding: 30px;
+            background-color: dimgray;
+            display:block;
+
+        }
+        a:hover {
+            background-color: coral;
+        }
+        .nav a {
+            display: inline-block;
+            width: 120px;
+            height: 58px;
+            text-align: center;
+            line-height: 58px;
+            color: white;
+        }
+        .nav .bg1 {
+            background-color: red;
+        }
+
+        .nav .bg1:hover {
+            background-color: #008000;
+        }
+        .gray {
+            font-size: 12px;
+            color: gray;
+            text-align: center;
+        }
+        .search {
+            color: dimgray;
+            width: 170px;
+        }
+        .jiacu {
+            font-weight: 700;
+        }
+
+        p {
+            text-indent: 2em;
+            line-height: 26px;
+        }
+        /* 想让图片加粗需要给它的父亲 p 标签添加在居中代码 */
+        .pic {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<h1>温度很高</h1>
+<div class="gray">
+    来源：<a href="#" >中国天气网</a>
+    <label>
+        <input type="text" value="请输入查询条件" class="search">
+    </label>
+    <input type="button" class="jiacu" value="搜索" >
+</div>
+<hr class="jiacu"/>
+<p>基德职业生涯一直以光头形象示人球迷们早就习惯了他光亮亮的大脑门，但在效力纽约尼克斯期间，
+    或许是被年轻人的潮流所感染,。戴上发带的基德的颜值变化暂且不说，
+    但神似中国某电视剧的村副主任，也神似卖羊肉串的大叔。可以说是喜感十足。
+</p>
+<p class="pic">
+    <img src="../yaoming.jpg" alt="姚明">
+</p>
+<p>姚明和科比应该算是中国球迷最喜欢的两位巨星，毫不夸张地说，
+    多数中国球迷的青春里就是这两人。在印象里，这两位巨星都不爱戴发带，
+    不过在职业生涯早期，他们却都曾在比赛中戴过发带。戴上发带的姚明显然比之前的他憨了不少
+</p>
+<hr />
+<a href="#">手机 电话卡</a>
+<a href="#">电视 盒子</a>
+<a href="#">笔记本 平板</a>
+<a href="#">出行 穿戴</a>
+<a href="#">智能 路由器</a>
+<a href="#">健康 儿童</a>
+<a href="#">耳机 音响</a>
+<hr />
+<div class="nav">
+    <a href="#" class="bg1">五彩导航</a>
+
+</div>
+
+
+</body>
+</html>

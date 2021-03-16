@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery对象拷贝</title>
+    <script src="../jQuery.min.js"></script>
+</head>
+<body>
+    <script>
+        /*
+            对象拷贝 $.extend()    将某个对象拷贝(合并)给另一个对象     覆盖原来对象对应的数据
+                $.extend([deep],target,object1,[objectN])
+                1、deep：如果为 true 为深拷贝，默认为false 浅拷贝
+                   浅拷贝：把被拷贝对象的复杂数据类型中的地址拷贝给目标对象，修改目标对象会影响拷贝对象
+                   深拷贝：完全克隆(拷贝对象，不拷贝地址)，修改目标对象不会影响被拷贝对象
+                2、target：要拷贝的目标对象
+                3、object1：待拷贝到第一个对象的对象
+                4、objectN：待拷贝到第N个对象的对象
+
+
+            */
+
+
+        $(function () {
+            var obj = {
+                id: 0,
+                name: "魏和尚"
+            }
+            var cloneObj = {
+                id: 1,
+                name:"李云龙",
+                hobbit: "basketball",
+                lesson: "math"
+            }
+            $.extend(cloneObj,obj);
+            console.log(cloneObj);
+        })
+    </script>
+</body>
+</html>

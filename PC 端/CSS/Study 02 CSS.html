@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS</title>
+    <!--    外部样式表：将样式单独写入 CSS 文件中，后面将 CSS 文件引入 HTML 页面中
+        <link rel="stylesheet" href="css文件路径">
+        -->
+    <link rel="stylesheet" href="StyleCSS.css">
+    <style>
+        /* 选择器(给谁改)  { 样式 (改成什么样子) } */
+
+        /* 基础选择器：
+                * 标签选择器：用 html 标签作为选择器，为页面某一种类标签修改。不能差异化修改
+                * 类选择器：
+                     语法：  .类名 { 样式 }  html 语句中需用 class 调用
+                     多类名修改： 调用时，需用空格隔开
+                * id 选择器：   只能调用一次，其它人无法使用
+                     语法：  #id { 样式 }  只能调用一次、
+                * 通配符选择器： *
+                     语法：  * { 样式 }  将页面内的所有标签修改，不需要调用，声明即调用
+                */
+
+        /* 字体属性： font-***
+               字体： font-family : 定义文本字体
+               大小： font-size : 定义字体大小，单位 px（像素）标题像素需要单独指定文字大小
+               粗细： font-weight : normal 正常   bold 加粗   100~900  400 = normal 700 = bold (开发常用数字,不需要单位)
+               样式： font-style  : normal 正常字体 italic 斜体
+               复合属性：font: font-style font-weight font-size(必须保留) font-family(必须保留)  书写顺序不能改变
+                       例 ：font: italic 700 20px "Microsoft YaHei"
+                           font: 200px "Microsoft YaHei"
+        */
+
+        /* 文本属性：text-***    修饰文本外观
+               颜色：color
+               对齐文本：text-align：文本的水平对齐
+               装饰文本：text-decoration： none 默认 没有装饰线   underline 下划线
+               文本缩进：text-indent   文本第一行缩进
+               行间距：line-height
+               字间距：letter-spacing
+               文字阴影：text-shadow：h-shadow v-shadow blur color;
+                     h-shadow：水平阴影位置，可为负值
+                     v-shadow：垂直阴影位置，可为负值
+                     blur：阴影模糊状态    color：阴影颜色
+        */
+        /*ul {
+            font-size: 50px;
+        }*/
+
+
+        .red {
+            color: crimson;
+        }
+
+        .font50 {
+            font-size: 50px;
+        }
+
+        #blue {
+            color: #59ff00;
+        }
+
+        p {
+            font-family: "Microsoft YaHei";
+            text-indent: 2em;
+            line-height: 25px;
+        }
+        p:hover {
+            text-shadow: 10px 10px 10px rgba(0,0,0,0.3);
+        }
+        body {
+            font-size: 20px;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+<!-- 层叠样式表(英文全称:Cascading Style Sheets)是一种用来表现HTML或XML等文件样式的计算机语言 -->
+<p>有点意思,有点意思,有点意思,有点意思,有点意思,有点意思,有点意思,有点意思,有点意思,有点意思,有点意思,有点意思,有点意思,有点意思,</p>
+<p>有点意思,有点意思,有点意思,有点意思,有点意思,有点意思,有点意思,有点意思,有点意思,有点意思,有点意思,有点意思,有点意思,有点意思,</p>
+
+<ul>
+    <li class="red font50">张三</li>
+    <li>李四</li>
+    <li>王五</li>
+    <li id="blue">赵六</li>
+</ul>
+
+外部样式表
+<div>史蒂夫·纳什成了布鲁克林网的新主帅。</div>
+
+</body>
+</html>

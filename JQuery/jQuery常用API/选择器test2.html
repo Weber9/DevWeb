@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab切换栏</title>
+    <script src="../jQuery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 600px;
+            height: 300px;
+            margin: 0 auto;
+            background-color: #c2ee42;
+        }
+        .list {
+
+            height: 50px;
+            background-color: #ee9900;
+        }
+        .text {
+            height: 250px;
+            background-color: #a71d5d;
+        }
+        ul {
+            list-style: none;
+
+        }
+        .list li {
+            width: 120px;
+            height: 26px;
+            float: left;
+            text-align: center;
+            padding: 12px 0;
+            cursor: pointer;    // 定义了鼠标指针放在一个元素边界范围内时所用的光标形状
+        }
+        .list .current {    // 此类用来点击改变选项卡
+            background-color: #55a532;
+            color: #fffdef;
+        }
+        .item {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="list">
+        <ul>
+            <li class="current">商品介绍</li>
+            <li>规格与包装</li>
+            <li>售后保障</li>
+            <li>评价</li>
+            <li>手机社区</li>
+        </ul>
+    </div>
+    <div class="text">
+        <div class="item" style="display: block">
+            商品介绍模块
+        </div>
+        <div class="item">规格与包装模块</div>
+        <div class="item">售后保障模块</div>
+        <div class="item">评价模块</div>
+        <div class="item">手机社区模块</div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $(".list li").click(function () {
+            // 点击 li 添加效果类，其余兄弟节点去除效果类（排它思想）
+            // $(this).addClass("current");
+            // $(this).siblings("li").removeClass("current");
+            $(this).addClass("current").siblings().removeClass("current");  //  链式编程
+            // 获取当前点击 li 的索引号
+            var index = $(this).index();
+            // 显示当前索引号下，留言板内容
+            $(".text .item").eq(index).show().siblings().hide();
+        })
+    })
+</script>
+</body>
+</html>

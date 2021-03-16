@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery元素操作</title>
+    <script src="../jQuery.min.js"></script>
+</head>
+<body>
+    <div>123456</div>
+    <div>789123</div>
+    <div>456789</div>
+    <hr>
+    <ul>
+        <li>里</li>
+    </ul>
+    <button>删除元素</button>
+    <hr>
+    <span class="lll">哈哈哈哈哈哈哈</span>
+    <script>
+        /*
+            遍历元素  each()
+                语法：  $("div").each(function(index,domEle){ xxx; })
+                1、each()方法遍历匹配的每一个元素。主要用DOM处理
+                2、index 每个元素的索引号
+                3、domEle 每个DOM元素对象，需要转换为jQuery对象才能使用 (可自定义)
+
+            创建元素  $("元素")
+            添加元素
+               1、 内部添加     添加元素为 父子关系
+                     element.append(内容)    放到内容的最后面
+                     element.prepend(内容)   放到内容最前面
+               2、 外部添加     添加元素为 兄弟元素
+                     element.after("内容")     放入目标元素后面
+                     element.before("内容")    放入目标元素前面
+            删除元素
+                element.remove()    删除匹配的元素自身
+                element.empty()     删除匹配元素集合中所有的子节点
+                element.html("")    清空匹配元素内容
+        */
+        $(function () {
+            var arr = ["red","green","blue"];
+            var sum = 0;
+            $("div").each(function (i, ele) {
+                console.log(i);
+                console.log(ele);
+                $(ele).css("color",arr[i]);
+                sum += parseInt($(ele).text());
+            })
+            console.log(sum);
+
+            // 创建元素
+            var li1 = $("<li>奥</li>");
+            var li2 = $("<li>给</li>");
+            var span1 = $("<span>我是</span>");
+            var span2 = $("<span>老八</span>");
+            // 添加元素
+            $("ul").prepend(li1);
+            $("ul").append(li2);
+
+            $(".lll").before(span1);
+            $(".lll").after(span2);
+
+            // 删除元素
+            $("button").click(function () {
+                $("ul").empty();
+            })
+
+        })
+    </script>
+</body>
+</html>

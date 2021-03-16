@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document 常用鼠标对象</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        /*
+           常见鼠标事件
+             * onclick： 鼠标点击左键触发             * onmouseover： 鼠标经过触发       onmouseenter  鼠标经过自身盒子触发
+             * onmouseout： 鼠标离开触发             * onfocus：获得鼠标焦点触发
+             * onblur：失去鼠标焦点触发               * onmousemove：鼠标移动触发
+             * onmouseup：鼠标弹起触发               * onmousedown：鼠标按下触发
+             * contextmenu  禁用右键菜单             * selectstart  禁止选中文字
+
+            鼠标事件对象：MouseEvent
+                * e.clientX     返回鼠标相对与浏览器可视区的 X 坐标
+                * e.clientY     返回鼠标相对与浏览器可视区的 Y 坐标
+                * e.pageX       返回鼠标相对文档页面的 X 坐标
+                * e.pageY       返回鼠标相对文档页面的 Y 坐标
+        */
+
+
+        document.addEventListener('click',function (e) {
+            console.log(e);
+            console.log(e.clientX);
+            console.log(e.clientY);
+            console.log("-------------------------------");
+            console.log(e.pageX);
+            console.log(e.pageY);
+        })
+
+    </script>
+</body>
+</html>

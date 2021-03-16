@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环精灵图</title>
+    <style>
+        div {
+            width: 250px;
+            height: 154px;
+            margin: 10% auto;
+        }
+        div ul li {
+            list-style: none;
+            float: left;
+            width: 24px;
+            height: 24px;
+            background-color: green;
+            margin: 12px ;
+            background: url("../../img/Taobao.png") no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div >
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script>
+
+        var lis = document.querySelectorAll('li');
+        for (var i = 0; i < lis.length; i++) {
+            var index = i * 44;
+            lis[i].style.backgroundPosition = '0 -'+index+'px';
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布留言</title>
+    <style>
+
+        li {
+            width: 300px;
+            background-color: #DD4A68;
+            margin: 10px 0;
+        }
+        a {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <textarea name="留言" cols="30" rows="10"></textarea>
+    <button>发布</button>
+    <ul></ul>
+
+<script>
+    var button = document.querySelector('button');
+    var text = document.querySelector('textarea');
+    var ul = document.querySelector('ul');
+    // 注册事件
+    button.onclick = function () {
+
+        if(text.value==''){
+            alert('您没有输入内容');
+            return false;
+        }
+        else{
+            var li = document.createElement('li');
+            li.innerHTML= text.value + "<a href='javascript:;'>删除</a>";  // 将 文本域 中的值赋给 li
+            ul.insertBefore(li,ul.children[0]);  // 将留言添加到留言板第一条
+            // 删除元素
+            var as = document.querySelectorAll('a');
+            for (var i = 0; i < as.length; i++) {
+                as[i].onclick = function () {
+                    ul.removeChild(this.parentNode);  // 删除的是 li  因为 a 为 li 的孩子,故用 this.parentNode得到 li
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

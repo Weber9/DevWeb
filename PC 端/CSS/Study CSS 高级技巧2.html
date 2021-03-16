@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS常见布局技巧</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /*
+            margin 负值运用    将盒子与盒子之间的边框消除，只显示一条
+                1、将每个盒子 margin 向左侧移动 -1px 正好压住相邻盒子边框
+                2、鼠标经过某个盒子显示边框，提高当前盒子的层级即可(如果没有定位，加 相对定位。如果有定位，则加 z-index)
+        */
+
+        ul li {
+            float: left;
+            list-style: none;
+            margin-left: -1px;
+            width: 150px;
+            height: 200px;
+            border: 1px solid red;
+        }
+        ul li:hover {
+            position: relative;
+            border: 1px solid green;
+        }
+
+    </style>
+</head>
+<body>
+      <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+      </ul>
+
+</body>
+</html>

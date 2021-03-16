@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery位置操作</title>
+    <script src="../jQuery.min.js"></script>
+
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border: 10px solid #2b2b2b;
+            margin: 10px;
+            padding: 10px;
+            background-color: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+
+    <script>
+        /*
+            jQuery 尺寸
+                width()/height()          获取元素宽高值，只包含 width/height
+                innerWidth()/innerHeight()       包含 padding
+                outerWidth()/outerHeight()       包含 padding、border
+                outerWidth(true)/outerHeight(true)     包含 padding、border、margin
+                * 参数为空，获取对应值，返回的是数字型
+                * 参数为数字，则修改相应值
+                * 参数不必写单位
+
+            jQuery 位置
+                1、offset()   设置或获取元素偏移(相对于 文档)
+                  ① offset()方法设置或返回被选元素相对于文档的偏移坐标，跟父级没有关系
+                  ② 该方法有两个属性 left、top。  都是相对于文档的距离
+                  ③ 可设置于是怒的偏移: offset({top:10,left:30});
+
+                2、position() 获取元素偏移(相对于 父级)
+                  ① 用于返回被选元素相对于带有定位的父级偏移坐标，如果父级没有定位，则以文档为准
+                  ② 此方法不能设置偏移
+
+                3、scrollTop()/scrollLeft() 设置或获取元素被卷去的头部和左侧
+
+
+            */
+
+        $(function () {
+
+            console.log($("div").width());
+            console.log($("div").innerWidth());
+            console.log($("div").outerWidth());
+            console.log($("div").outerWidth(true));
+
+        })
+    </script>
+</body>
+</html>

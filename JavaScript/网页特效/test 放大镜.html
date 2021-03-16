@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test 放大镜</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            position: relative;
+            width: 430px;
+            height: 430px;
+            border: 1px solid #4c4c4c;
+        }
+        .mirror {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(252,166,9,0.5);
+
+        }
+        .bigPhone {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 440px;
+            width: 430px;
+            height: 430px;
+            overflow: hidden;
+        }
+        .bigPhone img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="phone">
+            <img src="../../img/phone.png" alt="">
+        </div>
+        <div class="mirror"></div>
+        <div class="bigPhone">
+            <img src="../../img/bigphone.png" alt="">
+        </div>
+    </div>
+
+    <script>
+        var b = document.querySelector('.box');
+        var mirror = document.querySelector('.mirror');
+
+        var bigPhone = document.querySelector('.bigPhone');
+        var pic = bigPhone.childNodes[1];
+        console.log(pic);
+        b.addEventListener('mouseover',function () {
+            mirror.style.display = 'block';
+            bigPhone.style.display = 'block';
+
+        })
+        b.addEventListener('mouseout',function () {
+            mirror.style.display = 'none';
+            bigPhone.style.display = 'none';
+        })
+        b.addEventListener('mousemove',function (e) {
+            var x = e.pageX - 100;
+            var y = e.pageY - 100;
+            if(x <= 0){
+                x = 0;
+            }else if(x >= 230){
+                x = 230;
+            }
+            if(y <= 0){
+                y = 0;
+            }else if(y >= 230){
+                y = 230;
+            }
+            mirror.style.left = x + 'px';
+            mirror.style.top = y + 'px';
+            pic.style.left = -e.pageX  +'px';
+            pic.style.top = -e.pageY +'px';
+        })
+    </script>
+</body>
+</html>

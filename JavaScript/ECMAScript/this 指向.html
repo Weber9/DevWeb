@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this 指向</title>
+</head>
+<body>
+    <script>
+        /*
+            调用方式                  this指向
+            普通函数调用               window
+            构造函数调用               实例对象   原型对象里面的方法页指向实例对象
+            对象方法调用               该方法所属对象
+            事件绑定方法               绑定事件对象
+            定时器函数                 window
+            立即执行函数               window
+
+            改变 this 的指向
+            call()  修改函数运行时的this指向
+              fun.call(thisArg,arg1.arg2, ...)
+                thisArg: 当前调用函数this的指向对象
+                arg,arg2: 传递的其它参数
+              主要场景：经常做继承
+
+            apply()     调用一个函数   主要用于 利用数学内置对象 求最值
+              fun.apply(thisArg, [argsArray])     参数必须时数组/伪数组
+              * thisArg：在fun函数运行时指定的 this 值
+              * argsArray：传递的值，必须包含在数组中
+              * 返回值就是函数的返回值，因为就是调用函数
+              主要场景：经常跟数组有关系。比如借助于数学对象实现数组最值
+
+            bind()
+              fun.bind(this,arg1,arg2, ...)
+              * thisArg：在fun函数云习惯时指定的this值
+              * arg1，arg2：传递的其它参数
+              * 返回由指定的 this 值和初始化参数改造的原函数拷贝
+              主要场景：不调用函数，但是还想改变this指向。比如改变定时器内部的this指向
+
+
+
+            */
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery基本使用</title>
+    <script src="jQuery.min.js"></script>
+
+    <style>
+        div {
+            width: 300px;
+            height: 200px;
+            background-color: #DD4A68;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <span></span>
+    <script>
+        /*
+          jQuery 入口函数  $()
+             1、等着DOM结构渲染完毕即可执行内部代码，不必等到所有外部资源加载完成
+             2、相当于 原生JS 中的 DOMContentLoaded
+             3、不同于 原生JS 中的load事件是等页面文档、外部js文件、css文件、图片加载完毕才执行内部代码
+        */
+        /*$(document).ready(function () {
+            $('div').hide();
+        });
+        $(function () {
+            $('div').hide();
+        });*/
+
+        // jQuery对象 和 DOM对象 区别
+        // 1、DOM 对象：原生JS 获取过来的对象就是DOM对象
+        var myDiv = document.querySelector('div');    // myDiv 是 DOM对象
+        var mySpan = document.querySelector('span');  // mySpan 是 DOM对象
+        console.dir(myDiv);
+        // 2、jQuery 对象：用 jQuery方式获取过来的对象是jQuery对象 本质：通过 $ 把DOM元素进行了包装
+        $('div');   // $('div') 是 jQuery对象
+        $('span');  // $('span') 是 jQuery对象
+        console.dir($('div'));    // 伪数组形式存取
+        // 3、jQuery 对象只能使用 jQuery 方法，DOM 对象使用 原生JS 属性和方法
+
+        // 4、 DOM对象转换为 jQuery对象
+        //        $(DOM对象)       $('div')
+        // 5、 jQuery对象转换为 DOM对象
+        //        $('div')[index]  /  $('div').get(index)   index 为索引号
+
+    </script>
+</body>
+</html>

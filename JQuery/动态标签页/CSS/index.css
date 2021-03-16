@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* css3盒子模型 */
+    box-sizing: border-box;
+}
+ul {
+    list-style: none;
+}
+
+/* tab 标签 */
+#tab input {
+    width: 80%;
+    height: 60%;
+}
+.tabBox {
+    width: 800px;
+    height: 500px;
+    margin: 50px auto;
+    border: 1px solid lightsalmon;
+}
+.nav {
+    position: relative;
+    height: 100px;
+}
+ul li {
+    position: relative;
+    float: left;
+    width: 80px;
+    border-right: 1px solid #4c4c4c;
+    text-align: center;
+    line-height: 100px;
+
+}
+.liactive {
+    border-bottom: 2px solid #fff;
+    z-index: 9;
+}
+
+.tabadd {
+    position: absolute;
+    right: 10px;
+    top: 25px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0,0,0,.3);
+}
+.tabadd span {
+    font-size: 50px;
+    line-height: 40px;
+    margin-left: 6px;
+    cursor: pointer;
+}
+.icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+}
+.icon::after{
+    position: absolute;
+    top: -42px;
+    right: 0;
+    font-family: iconfont;
+    content: '\ea42';
+    font-size: 12px;
+}
+
+/* tab 内容 */
+.tabscon {
+    height: 400px;
+    padding: 20px 20px ;
+    box-sizing: border-box;
+    border-top: 1px solid #ccc;
+}
+section {
+    display: none;
+}
+.conactive {
+    display: block;
+    width: 400px;
+    height: 200px;
+}
+
+

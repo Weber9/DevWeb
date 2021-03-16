@@ -1,0 +1,27 @@
+/*
+  变量    @ 变量名: 值；
+    命名规则： 必须有@为前缀
+             不能包含特殊字符
+             不能以数字开头
+             大小写敏感
+     运算(加减乘除)： 两个不同的单位的值运算，运算结果取第一个值的单位
+
+*/
+html {
+  font-size: 50px;
+}
+div {
+  width: 6rem;
+  height: 5rem;
+  background-color: pink;
+}
+div p {
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.5rem;
+  background-color: #ee9900;
+}
+div:hover p {
+  background-color: #DD4A68;
+}
+/*# sourceMappingURL=less基础.css.map */

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 特性</title>
+    <style>
+        /* 层叠性：相同选择器设有相同的样式，靠后的会覆盖前面的冲突的
+              样式冲突，就近原则。样式不冲突，不覆盖。
+           继承性：子标签会继承父标签的某些样式  如字体 颜色
+           优先级：!important > 行内样式 > id选择器 > 类选择器，伪类选择器 > 元素选择器 > 继承/*
+               继承的权重为 0 ，如果该元素没有选中，不管父元素权重多高，子元素的权重都是 0
+               复合选择器会有权重叠加的问题，权重可以叠加但不会进位
+        */
+        li {      /* 权重为 0,0,0,1 */
+            color: red;
+        }
+        .nav li {    /* 权重为 0,0,0,1 + 0,0,1,0 = 0,0,1,1 */
+            color: green;
+        }
+        div {
+            color: red;
+            font-size: 14px;
+        }
+        body {
+            font: 20px/1.5 "Microsoft YaHei";
+            /*  行高的继承：行高可跟单位也可不跟
+                          如果子元素没设置行高，则行高为1.5
+                          子元素的行高为文字大小*行高
+            */
+        }
+        p {
+            font: 18px "Microsoft YaHei";
+        }
+    </style>
+</head>
+<body>
+<h1>继承性</h1>
+<div>
+    <p>这波啊，这波是继承</p>
+</div>
+<p>这波是行高的继承</p>
+
+<ul class="nav">
+    <li>虹猫</li>
+    <li>蓝兔</li>
+    <li>大奔</li>
+</ul>
+</body>
+</html>

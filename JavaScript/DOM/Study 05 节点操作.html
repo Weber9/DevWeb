@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节点操作</title>
+</head>
+<body>
+    <div class="demo">
+        <div class="box">
+            <span class="erweima"> </span>
+        </div>
+    </div>
+
+    <ul>
+        <li>我是小li1</li>
+        <li>我是小li2</li>
+        <li>我是小li3</li>
+        <li>我是小li4</li>
+        <li>我是小li5</li>
+    </ul>
+
+    <ol>
+        <li>我是小li1</li>
+        <li>我是小li2</li>
+        <li>我是小li3</li>
+        <li>我是小li4</li>
+        <li>我是小li5</li>
+    </ol>
+    <hr />
+
+    <script>
+        /*  节点概述： 一般地，节点只好啊拥有 nodeType(节点类型) nodeName(节点名称) nodeValue(节点值)
+                * 元素节点   nodeType 为 1    主要操作
+                * 属性节点   nodeType 为 2
+                * 文本节点   nodeType 为 3   (包括文字、空格、换行)
+
+            节点层级：利用 DOM树 将节点分为不同层级关系，常见为父子兄层级关系
+                1、父级节点   node.parentNode
+                     * 得到是距离元素最近地节点
+                2、子节点    parentNode.childNode    得到所有所有子节点包含 元素节点和文字节点
+                           * parent.children      只得到元素节点  重点使用
+                                * parent.firstElementChild   获取第一个元素节点  得不到返回 NULL  IE9 以上可用
+                                * parent.lastElementChild   获取最后一个元素节点
+                              * 实际开发方法  子节点返回结果为 伪数组 故可用数组序号获取
+                                    第一个元素：parent.children[0];
+                                    最后一个元素：parent.children[parent.children.length-1];
+               3、兄弟节点    node.nextSibling  下一个兄弟节点 包含元素节点或者文本节点
+                            node.previousSibling   上一个兄弟节点 返回所有节点
+
+        */
+
+        // 父节点
+        var erweima = document.querySelector('.erweima');
+        var parentnode = erweima.parentNode;
+        console.log(parentnode);
+
+        // 子节点
+        var ul = document.querySelector('ul');
+        var children = ul.children;
+        console.log(children);
+        // 获取端口处子节点
+        var firstChild = ul.children[0];
+        var lastChild = ul.children[ul.children.length-1];
+        console.log(firstChild);
+        console.log(lastChild);
+
+        // 兄弟节点
+        var ol = document.querySelector('ol');
+        var upnode = ol.previousSibling;
+        console.log(upnode);
+        var upnode2 = ol.previousElementSibling;
+        console.log(upnode2);
+
+        /* 增删节点
+              创建节点  document.creatElement('tagName')  动态创建元素节点
+
+              添加节点
+                 * 前面添加  node.insertBefore(child,指定元素)
+                 * 后面添加  node.appendChild(child)    node  父级    child 子级
+
+              删除节点
+                 * document.removeChild(child)   从 DOM 中删除一个子节点，返回删除的节点
+
+              替换节点
+                 * document.replaceChild(newnode,oldnew)	替换 HTML 元素
+                        newnode:  替换元素      oldnew:  被替换元素
+
+              复制节点
+                 * node.cloneNode()
+                        * 如果括号为空或内容为 false 浅拷贝  只复制标签不复制里面内容
+                        * 括号里为 true  复制标签并复制里面的内容
+
+        */
+
+
+        // 复制节点
+        var cloneNode = ul.children[0].cloneNode(true);
+        ul.appendChild(cloneNode);
+        var clone = ol.children[0].cloneNode();
+        ol.appendChild(clone);
+    </script>
+</body>
+</html>

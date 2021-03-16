@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 浮动</title>
+    <style>
+        /*  1、网页布局多个块级元素纵向排列找标准流，多个块级元素横向排列找浮动
+            2、开发过程中大多数情况，先用标准流的父元素排列上下位置，之后内部子元素采取浮动排列左右位置。符合网页布局第一准则
+            3、先用标准流的父元素排列上下位置，之后内部子元素采取浮动排列左右位置
+            4、浮动的盒子只会影响浮动盒子后面的标准流，不会影响前面的标准流
+          浮动  float: none/left/right
+              特性：1、脱离标准普通流的控制移动到指定位置
+                   2、浮动的盒子不在保留原先的位置
+          清除浮动： clear: both/left/right
+              实际开发中，不会定义父盒子高度，它会随着子盒子的高而变化。当开启另一个父盒子时，若不清除上方浮动，则旧盒子会覆盖新盒子
+                   1、清除浮动的本质时清除浮动元素成的影响
+                   2、如果父盒子本身有高度，则不需要清除浮动
+                   3、清除浮动后，父级元素就会根据浮动的盒子自动检测高度。父级有了高度就不会影响下面的标准流了。
+              清除方法：1、额外标签法(隔离法)  在子盒子末尾加一个没有浮动的盒子。  只能加块元素
+                      2、给父级添加 overflow: hidden/auto/scroll          无法显示溢出部分
+                      3、after 伪元素法
+                          .clearfix:after {
+                                content: "";
+                                display: block;
+                                height: 0;
+                                clear: both;
+                                 visibility: hidden;
+                          }
+                          .clearfix {   / * IE6、7 专有
+                                *zoom: 1;
+                          }
+                      4、双伪元素清除浮动
+                          .clearfix:before,.clearfix:after {
+                                content: ""; display:table;
+                          }
+                          .clearfix:after {
+                                clear:both;
+                          }
+                          .clearfix {   / * IE6、7 专有
+                                *zoom: 1;
+                          }
+        */
+        .clearfix:after {
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        .red {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            float: left;
+        }
+        .green {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            float: left;
+        }
+        .black {
+            width: 600px;
+            height: 400px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<div class="clearfix">
+<div class="red">1</div>
+<div class="green">2</div>
+</div>
+<div class="black "></div>
+</body>
+</html>

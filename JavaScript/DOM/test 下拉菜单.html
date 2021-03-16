@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 练习2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        .box {
+            width: 500px;
+            height: 50px;
+            background-color: #ee9900;
+            margin: 100px auto;
+        }
+        .main {
+            height: 50px;
+        }
+        .main li{
+            float: left;
+            margin-left: 50px;
+
+        }
+        .main li ul{
+            position: absolute;/*定位使其脱离标准文档流*/
+            display: none;
+        }
+        .main li ul li{
+            float: none;
+            margin: 0;
+            background-color: #ee9900;
+        }
+
+        a {
+            color: black;
+            border: 0 solid #ee9900;
+            text-decoration: none;
+            padding: 14px 0;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul class="main">
+            <li>
+                <a href="#">首页</a>
+            </li>
+            <li>
+                <a href="#" id="li">简介</a>
+                <ul>
+                    <li>
+                        <a href="#">臭豆腐</a>
+                    </li>
+                    <li>
+                        <a href="#">腐乳</a>
+                    </li>
+                    <li>
+                        <a href="#">柠檬</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">机构</a>
+            </li>
+            <li>
+                <a href="#">新闻</a>
+            </li>
+            <li>
+                <a href="#">关于我们</a>
+            </li>
+        </ul>
+    </div>
+    <script>
+
+
+
+    </script>
+</body>
+</html>

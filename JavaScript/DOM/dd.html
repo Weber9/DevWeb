@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>下拉菜单</title>
+
+    <style type="text/css">
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+        ul {
+
+            list-style: none;
+
+        }
+
+        .clearfix:after {
+
+            content: '';
+
+            clear: both;
+
+            display: block;
+
+        }
+
+        .box {
+
+            width: 240px;
+
+            margin: 100px auto;
+
+        }
+
+
+        .main {
+
+            background: url(images/bg.jpg);
+
+            height: 21px;
+
+        }
+
+        .main li {
+
+            float: left;
+
+            margin-left: 4px;
+
+            background: url(images/libg.jpg) no-repeat;
+
+            position: relative;
+
+        }
+
+        .main li ul {
+
+            display: none;
+
+        }
+
+        .main li ul {
+
+            position: absolute; /*定位使其脱离标准文档流*/
+
+        }
+
+        .main li ul li {
+
+            float: none;
+
+            margin: 0;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+    <ul class="main clearfix">
+
+        <li>一级菜单1
+
+            <ul>
+
+                <li>二级菜单1</li>
+
+                <li>二级菜单2</li>
+
+                <li>二级菜单3</li>
+
+            </ul>
+
+        </li>
+
+        <li>一级菜单2
+
+            <ul>
+
+                <li>二级菜单1</li>
+
+                <li>二级菜单2</li>
+
+                <li>二级菜单3</li>
+
+            </ul>
+
+        </li>
+
+        <li>一级菜单3
+
+            <ul>
+
+                <li>二级菜单1</li>
+
+                <li>二级菜单2</li>
+
+                <li>二级菜单3</li>
+
+            </ul>
+
+        </li>
+
+    </ul>
+
+</div>
+
+
+</body>
+
+<script>
+
+    var main = document.getElementsByClassName("main")[0];
+
+    var lis = main.children;
+
+    for (var i = 0; i < lis.length; i++) {
+
+        lis[i].onmouseenter = function () {
+
+            this.children[0].style.display = "block";
+
+        }
+
+        lis[i].onmouseleave = function () {
+
+            this.children[0].style.display = "none";
+
+        }
+
+    }
+
+</script>
+
+</html>

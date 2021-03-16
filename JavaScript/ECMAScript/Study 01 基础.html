@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        /*for(var i=1;i<=3;i++){
+            alert(i);
+            console.log(i); //控制台输出
+        }*/
+
+        //  正则表达式
+        /*var reg=RegExp("\\w{6,16}");
+        var reg2=/^\w{6,16}$/;
+
+
+        var username="zhangsan";
+        alert(reg.test(username));
+        alert(reg2.test("asdasdasdabihabk31313131"));*/
+
+
+        /*var str="传智播客";
+        var s = encodeURI(str);
+        document.write(s+"<br />");  // %E4%BC%A0%E6%99%BA%E6%92%AD%E5%AE%A2
+        var s1 = decodeURI(s);
+        document.write(s1);   // 传智播客
+        var num="123abc";
+        var number = parseInt(num);
+        alert(number + 1);m
+
+        /*
+            输入：prompt("提示信息","输入框默认信息")
+        */
+        // prompt("你喜欢的颜色","")
+        // prompt("你喜欢的颜色","黄色");
+        // 无参调用
+        function study() {
+            for (var i = 0; i < 5; i++) {
+                document.write("<h2>你好</h2>");
+            }
+        }
+        // 有参调用
+        function study2(count) {
+            for (var i = 0; i < count; i++) {
+                document.write("我好"+"<br />")
+            }
+        }
+
+        /*
+            立即执行函数  (function(){})() 或者   (function(){}())
+               主要作用：创建一个独立的作用域，避免了命名冲突
+        */
+
+        (function (a) {
+            console.log('奥里给'+ a);
+        })(1)
+
+        // 取数组的最后一项      不能在页面上生成，页面上生成会报错
+        var ary=[1,2,3,4,5,6];
+        document.writeln(ary.slice(-1));
+        console.log(ary.slice(-1));
+        // alert(ary.slice(-1));
+        document.writeln(ary.slice(-2));
+        console.log(ary.slice(-2));
+        document.writeln(ary.slice(-3)+"<br />");
+        console.log(ary.slice(-3));
+
+        // 数组去重
+        const array=[1,1,2,3,4,5,5];
+        const uniqueArray=[...new Set(array)];
+        document.write(uniqueArray);
+
+        // 对象
+        // 构造对象
+        function Star(name,age,sex) {
+            this.name=name;
+            this.age=age;
+            this.sex=sex;
+        }
+        var Li = new Star('老八',18,'男');
+        var Wei = new Star('怪哥',20,'男');
+
+        //  遍历   for(变量名 in 对象）
+        for (var liKey in Li) {
+            console.log(Li[liKey]);
+        }
+
+        for (var weiKey in Wei) {
+            console.log(Wei[weiKey]);
+        }
+    </script>
+</head>
+<body>
+
+<hr />
+<input type="button" name="btn" value="无参调用 显示5次你好" onclick="study()">
+<input type="button" name="btn2" value="有参调用 显示我好" onclick="study2(prompt('请输入我好次数：',''))">
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布留言</title>
+    <script src="../jQuery.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            position: relative;
+            width: 630px;
+            height: 400px;
+            border: 1px solid #000000;
+            margin: 0 auto;
+        }
+        .release {
+            width: 530px;
+            height: 230px;
+            margin: 0 auto;
+        }
+        textarea {
+            width: 480px;
+            height: 200px;
+
+        }
+
+        ul {
+            list-style: none;
+            width: 500px;
+            margin-left: 50px;
+        }
+        ul li {
+            display: none;
+            line-height: 25px;
+            border-bottom: 1px dashed #000000 ;
+        }
+        ul li a {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="M-box">
+        <div class="release">
+            <textarea></textarea>
+            <button class="btn">发布</button>
+        </div>
+        <hr>
+        <ul>
+        </ul>
+    </div>
+
+    <script>
+        $(function () {
+            // 1、点击 按钮 获取留言内容，展示在留言板上  ( 动态创建 li )
+            $(".btn").on("click" ,function () {
+                var li = $("<li></li>");
+                var text = $("textarea").val();
+                li.html(text + "<a href='javascript:;'>删除</a>");
+                $("ul").prepend(li);
+                li.slideDown();
+                $("textarea").val("");
+            })
+            // 2、点击删除按钮，删除留言        on() 可操作动态创建元素
+            $("ul").on("click","a",function () {
+                $(this).parent().slideUp(function () {
+                    $(this).remove();
+                });
+            })
+
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document 事件委托</title>
+</head>
+<body>
+    <ul>
+        <li>臭豆腐、俘虏加柠檬，你看着汉堡做的行不行！</li>
+        <li>臭豆腐、俘虏加柠檬，你看着汉堡做的行不行！</li>
+        <li>臭豆腐、俘虏加柠檬，你看着汉堡做的行不行！</li>
+        <li>臭豆腐、俘虏加柠檬，你看着汉堡做的行不行！</li>
+        <li>臭豆腐、俘虏加柠檬，你看着汉堡做的行不行！</li>
+    </ul>
+
+    <script>
+        /*
+            事件委托：将事件监听器设置在父节点上，然后利用冒泡原理影响每个子节点
+                例 给 ul 注册点击事件，通过 target 找到当前点击的 li ，通过冒泡找到 ul，从而实现效果
+
+        */
+        var ul = document.querySelector('ul');
+        var lis = ul.children;
+        ul.addEventListener('click',fun);
+        function fun(e){
+            // 排他思想   点击前先将 所有 li 的颜色清空
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].style.backgroundColor = '#ffffff';
+            }
+            e.target.style.backgroundColor = 'pink';
+        }
+    </script>
+</body>
+</html>

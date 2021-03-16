@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document 高级事件0000000000000000</title>
+
+</head>
+<body>
+    <button>奥里给</button>
+    <button>干就完了</button>
+    <button>冬泳</button>
+    <button>怪哥</button>
+    <script>
+        /*
+           事件流：事件发生时再元素节点之间按照特定的顺序传播，这哥穿哦过程称为 DOM事件流
+              捕获阶段：document --> html --> body --> element
+              目标阶段：执行事件
+              冒泡阶段：element --> body --> html --> document
+              * JS代码中只能执行捕获或冒泡一个阶段
+              * 实际开发，更关注事件冒泡
+              * 有些事件没有冒泡，如 onblur、onfocus、onmouseenter、onmouseleave
+
+            注册事件：
+              1、传统方式：由 事件三要素(事件源 事件类型 事件处理程序） 构成   唯一性：一个元素只能有一个处理程序
+
+              2、方法监听注册方式(高级)    一个元素可添加多个处理程序
+                   addEventListener  事件监听方式
+                   eventTarget.addEventListener(type,listener[,useCapture])
+                     * type: 事件处理类型(字符串)，如 click、mouseover 等 此处不加 on
+                     * listener: 事件处理函数，事件发生时，调用处理函数
+                     * useCapture: 可选参数，布尔值，默认为 false(冒泡阶段)/ true(捕获阶段)
+
+            删除事件：
+                eventTarget.removeEventListener(type,listener[,useCapture])
+
+        */
+
+        // 传统模式
+        var b = document.querySelectorAll('button');
+        b[0].onclick = function () {
+            alert("奥里给");
+        }
+
+        // 事件监听模式
+        b[1].addEventListener('click',function () {
+            alert("干就完了");
+        })
+        b[1].addEventListener('click',function () {
+            alert("奥里给");
+        })
+
+        b[2].addEventListener('click',fun);
+        function fun() {
+            alert("我是老八");
+            b[2].removeEventListener('click',fun);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>携程在手，说走就走</title>
+    <link rel="stylesheet" href="./CSS/index2.css">
+    <link rel="stylesheet" href="./CSS/normalize2.css">
+</head>
+<body>
+    <div class="search_index">
+        <div class="search_box">
+            <span></span>
+            <input type="text" placeholder="搜索:目的地/酒店/景点/航班号">
+        </div>
+        <div class="search_reason">
+            <span></span>
+        </div>
+    </div>
+    <div class="bgc">
+        <img src="./images/baodi.jpg" alt="">
+    </div>
+    <ul class="local_nav">
+        <li>
+            <span class="icon"></span>
+            <span>攻略·景点</span>
+        </li>
+        <li>
+            <span class="icon"></span>
+            <span>门票·游玩</span>
+        </li>
+        <li>
+            <span class="icon"></span>
+            <span>美食林</span>
+        </li>
+        <li>
+            <span class="icon"></span>
+            <span>周边游</span>
+        </li>
+        <li>
+            <span class="icon"></span>
+            <span>一日游</span>
+        </li>
+
+    </ul>
+
+    <div class="nav">
+        <div class="first">
+            <span>酒店</span>
+            <span>民宿·客栈</span>
+            <span>特价·爆款</span>
+        </div>
+        <div class="second">
+            <span>机票</span>
+            <span class="part">火车票</span>
+            <span class="part">汽车·船票</span>
+            <span class="part">专车·租车</span>
+        </div>
+        <div class="third">
+            <span>旅游</span>
+            <span class="part">高铁游</span>
+            <span class="part">邮轮游</span>
+            <span class="part">定制游</span>
+        </div>
+    </div>
+    <script>
+
+        // 循环精灵图
+        var ic = document.querySelectorAll('.icon');
+        for (var i = 0; i < ic.length; i++) {
+            var index = i * 40;
+            ic[i].style.backgroundPositionY = - + index +'px' ;
+        }
+
+    </script>
+</body>
+</html>

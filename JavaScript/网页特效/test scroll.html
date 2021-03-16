@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test scroll</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .nav,
+        .banner,
+        .main,
+        .foot {
+            width: 800px;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+        .nav {
+            background-color: #DD4A68;
+        }
+        .banner {
+            background-color: #9a6e3a;
+        }
+        .main {
+            background-color: #63a35c;
+        }
+        .foot {
+            background-color: #0077aa;
+        }
+        .frame {
+            position: fixed;
+            top: 60px;
+            left: 800px;
+        }
+        ul li {
+            list-style: none;
+            width: 50px;
+            height: 50px;
+            background-color: #ff8500;
+            margin-bottom: 5px;
+        }
+        .li_main {
+            display: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav"></div>
+    <div class="banner"></div>
+    <div class="main"></div>
+    <div class="foot"></div>
+    <div class="frame">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li class="li_main">返回顶部</li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script>
+        var f = document.querySelector('.frame');
+        var lm = document.querySelector('.li_main');
+        var b = document.querySelector('.banner');
+
+
+        document.addEventListener('scroll',function (){
+
+            if(window.pageYOffset >= b.offsetTop && window.pageYOffset <= 570){
+                lm.style.display = 'block';
+            }else {
+                lm.style.display = 'none';
+            }
+        })
+        // 点击回到页面顶部
+        lm.addEventListener('click',function () {
+            // window.scroll(0,0);
+
+            // 利用 缓动动画函数
+            // 窗口滚动，对象为 window
+            animate(window,0);
+        })
+
+        // 动画函数
+        function animate(obj, target,callback/*回调函数，当元素移动完成后，再进行其它操作*/) {   //  obj 运动对象   target 运动距离
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                var step = (target - window.pageYOffset) / 10  ;  // 设置步长
+                step = step > 0 ? Math.ceil(step):Math.floor(step);
+                if(obj.window.pageYOffset === target) {
+                    clearInterval(obj.timer);
+                    if(callback){  // 如果存在 回调函数 则执行，否则不影响
+                        callback();
+                    }
+                }
+                // 元素移动
+                // obj.style.left = obj.offsetLeft + step + 'px';
+                window.scroll(0,window.pageYOffset + step);
+            },20);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D转换</title>
+    <style>
+        /*
+            三位坐标系：
+                  X轴水平向右    右边为正，左边为负
+                  Y轴垂直向下    下面为正，上面为负
+                  Z轴垂直屏幕    往外为正，往里为负
+
+            透视：想要再网页上展示3D效果需加透视
+                perspective:  像素;   像素越大，物体平面成像越小;像素越小，物体平面成像约大
+                    * 透视需写在被观察元素的父盒子上面
+            3D位移： transform: translate3d(x,y,z);
+            3D旋转： transform: rotateX()/rotateY()/rotateZ();
+
+            3D呈现： transform-style: flat(默认，不开启)/preserve-3d(开启)
+                * 让子盒子也呈现立体效果
+                * 代码写给父级，但影响子盒子
+
+        */
+
+        .box {
+            position: relative;
+            width: 800px;
+            height: 800px;
+            margin: 100px auto;
+
+            transition: all 2s;
+            transform-style: preserve-3d;
+
+        }
+        .front,
+        .back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+        }
+        .front {
+            background: url("../../img/Fiddlesticks.png");
+        }
+        .back {
+            background: url("../../img/Tahmkench.png") no-repeat;
+            transform: rotateY(180deg);
+        }
+        .box:hover {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+
+        <div class="front"></div>
+        <div class="back"></div>
+    </div>
+</body>
+</html>

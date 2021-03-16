@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多库共存</title>
+    <script src="../jQuery.min.js"></script>
+</head>
+<body>
+
+    <script>
+         $(function() {
+             /*
+                多库共存  让jQuery和其它js库不存在冲突，可以同时存在
+                   jQuery使用 $ 做标识符，其它js库也会用 $ 做标识符，这样一起使用会引起冲突
+                   解决方案：
+                     1、将 $ 符号用 jQuery代替。 如 jQuery("div")
+                     2、jQuery变量规定新的名称：  $.noConflict()      var xx = $.noConflict();
+
+             */
+         })
+    </script>
+</body>
+</html>

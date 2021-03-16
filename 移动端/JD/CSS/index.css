@@ -1,0 +1,128 @@
+/* 首页样式表*/
+
+body {
+    width: 100%;
+    max-width: 640px;
+    min-width: 320px;
+    font-size: 14px;
+    font-family: -apple-system,Helvetica,sans-serif;
+    color: #666666;
+    line-height: 1.5;
+    margin: 0 auto;
+}
+.floor {
+    position: fixed;
+    width: 100%;
+    max-width: 640px;
+    height: 296px;
+    background: url("../images/floor.jpg") no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    z-index: -999;
+}
+.pic {
+    position: relative;
+    left: 0;
+    top: 290px;
+    width: 100%;
+    height: 100px;
+
+}
+.pic img {
+    float: left;
+    width: 33.33%;
+    height: 100%;
+}
+/*  搜索 */
+header {
+    position: relative;
+    height: 44px;
+    background-color: #e43140;
+    overflow: hidden;
+}
+.search_btn  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 44px;
+}
+.search_btn span {
+    position: absolute;
+    display: inline-block;
+    width: 20px;
+    height: 18px;
+    background: url("../images/下载.png") no-repeat;
+    background-size: 100% 100%;
+    margin: 14px 0 0 15px;
+}
+.search {
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid transparent;
+    border-radius: 60px;
+    margin: 0 50px;
+    margin-top: 8px;
+    background-color: #fff;
+    overflow: hidden;
+}
+.search .jd {
+    float: left;
+    position: relative;
+    width: 20px;
+    height: 15px;
+    background: url("../images/JD.png") no-repeat;
+    background-size: 20px 15px;
+    margin: 8px 8px 0 15px;
+    z-index: 99;
+}
+.jd::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 26px;
+    border-right: 1px solid #ddd;
+    height: 16px;
+}
+.search .mirror {
+    display: block;
+    float: left;
+    position: relative;
+    width: 18px;
+    height: 15px;
+    background: url("../images/jd-sprites.png") no-repeat;
+    background-position: -80px 0;
+    background-size: 200px;
+    margin: 8px 0 0 0;
+    z-index: 999;
+
+}
+.search input {
+    position: absolute;
+    top: 15px;
+    left: 110px;
+    height: auto;
+    border: 1px solid transparent;
+    font-size: 12px;
+    padding-left: 5px;
+    -webkit-box-flex: 1;
+    margin-left: 5px;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 16px;
+    outline: none;
+}
+.login {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 44px;
+    background-color: transparent;
+    color: #fffdef;
+    font-size: 16px;
+    line-height: 44px;
+    text-align: center;
+    z-index: 999;
+}

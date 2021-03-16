@@ -1,0 +1,195 @@
+/* 首页样式表*/
+
+body {
+    max-width: 540px;
+    min-width: 320px;
+    font-size: 14px;
+    font-family: -apple-system,Helvetica,sans-serif;
+    color: #000000;
+    line-height: 1.5;
+    margin: 0 auto;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.search_index {
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    min-width: 320px;
+    max-width: 540px;
+    height: 44px;
+    background-color: rgba(135, 157, 174,0.5);
+}
+.search_box {
+    flex: 1;
+    width: 100%;
+    height: 44px;
+}
+.search_box span {
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    width: 35px;
+    height: 28px;
+    background: url("../images/home-common.png") no-repeat ;
+    background-size: 21px auto;
+
+}
+.search_box input {
+    width: 100%;
+    height: 30px;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    margin: 7px 0 0 15px;
+    padding-left: 40px ;
+    outline: none;
+    color: #666;
+    font-size: .94rem;
+}
+
+.search_reason {
+    display: flex;
+    width: 51px;
+    height: 44px;
+}
+.search_reason span {
+    position: absolute;
+    right: -10px;
+    width: 40px;
+    height: 28px;
+    background: url("../images/home-common.png") no-repeat 0 -71px;
+    background-size: 21px auto;
+}
+.search_reason span::after {
+    content: '我的';
+    position: absolute;
+    right: 16px;
+    bottom: -17px;
+    color: #ffffff;
+    font-size: 12px;
+}
+.bgc {
+    margin-top: 50px;
+    width: 540px;
+}
+.bgc img {
+    display: block;
+    width: 100%;
+}
+.local_nav {
+    display: flex;
+    height: 64px;
+    margin: 10px 10px;
+    background-color: #b3d4fc;
+    border-radius: 8px;
+}
+.local_nav li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 5;
+
+}
+.local_nav li .icon {
+    width: 40px;
+    height: 40px;
+    align-self: center;
+    background: url("../images/home-fivemain.png") no-repeat 0 0;
+    background-size: 40px auto;
+}
+
+.nav {
+    margin: 8px 10px 0 10px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.first {
+    display: flex;
+    justify-content: space-between;
+    height: 64px;
+    text-align: center;
+    line-height: 64px;
+    background: linear-gradient(to right,#fa5956,#fb8650 54%);
+    color: #fffdef;
+}
+.first span:nth-child(1) {
+    width: 35%;
+    background: url("../upload/grid-nav-items-hotel.png") no-repeat right bottom;
+    background-size: 73px auto;
+    border-top-left-radius: 8px;
+}
+.first span:nth-child(2) {
+    flex: 1;
+    background: url("../upload/grid-nav-items-minsu.png") no-repeat left bottom;
+    background-size: 31px auto;
+}
+.first span:nth-child(3) {
+    flex: 2;
+    background: url("../upload/grid-nav-items-hot.png") no-repeat right bottom;
+    background-size: 100% auto;
+}
+.second {
+    display: flex;
+    justify-content: flex-start;
+    height: 64px;
+    text-align: center;
+    line-height: 64px;
+    background: linear-gradient(to right,#4b8fed,#53bced);
+    color: #ffffff;
+    font-size: 14px;
+}
+.second span:nth-child(1){
+    flex: 0 1 35%;
+    background: url("../upload/grid-nav-items-flight.png") no-repeat right bottom;
+    background-size: 79px auto;
+}
+.part {
+    flex: 3;
+}
+.second span:nth-child(2){
+    /*flex: 23%;*/
+    background: url("../upload/grid-nav-items-train.png") no-repeat left bottom;
+    background-size: 37px auto ;
+}
+.third {
+    display: flex;
+    justify-content: flex-start;
+    height: 64px;
+    text-align: center;
+    line-height: 64px;
+    color: #ffffff;
+    font-size: 14px;
+    background: linear-gradient(to right,#34c2aa,#6cd557);
+}
+.third span:nth-child(1){
+    flex: 0 0 35%;
+    background: url("../upload/grid-nav-items-travel.png") no-repeat right bottom;
+    background-size: 73px auto;
+}
+.third span:nth-child(2){
+    background: url("../upload/grid-nav-items-dingzhi.png") no-repeat left bottom;
+    background-size: 37px auto;
+}
+.nav span {
+    border: 1px solid #f2f2f2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

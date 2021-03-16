@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab切换栏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 600px;
+            height: 300px;
+            margin: 0 auto;
+            background-color: #c2ee42;
+        }
+        .list {
+
+            height: 50px;
+            background-color: #ee9900;
+        }
+        .text {
+            height: 250px;
+            background-color: #a71d5d;
+        }
+        ul {
+            list-style: none;
+
+        }
+        .list li {
+            width: 120px;
+            height: 26px;
+            float: left;
+            text-align: center;
+            padding: 12px 0;
+            cursor: pointer;    // 定义了鼠标指针放在一个元素边界范围内时所用的光标形状
+        }
+        .list .current {    // 此类用来点击改变选项卡
+            background-color: #55a532;
+            color: #fffdef;
+        }
+        .item {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="list">
+        <ul>
+            <li class="current">商品介绍</li>
+            <li>规格与包装</li>
+            <li>售后保障</li>
+            <li>评价</li>
+            <li>手机社区</li>
+        </ul>
+    </div>
+    <div class="text">
+        <div class="item" style="display: block">
+            商品介绍模块
+        </div>
+        <div class="item">规格与包装模块</div>
+        <div class="item">售后保障模块</div>
+        <div class="item">评价模块</div>
+        <div class="item">手机社区模块</div>
+
+    </div>
+</div>
+
+<script>
+    //  第一步 使用 排他思想 让顶部选项卡点击后称为焦点
+    var list = document.querySelector('.list');
+    var lis = list.getElementsByTagName('li');
+    var item = document.querySelectorAll('.item');
+    for (var i = 0; i <lis.length ; i++) {
+        // 开始先给 选项卡 设置编号
+        lis[i].setAttribute('data-index',i);   // H5标准 自定义属性用 data- 开头
+        lis[i].onmousemove = function () {
+            //  先清空其余 li 的所用样式
+            for (var j = 0; j < lis.length; j++) {
+                lis[j].className= '';
+            }
+            // 将样式赋给点击的值
+            this.className = 'current';
+            // 第二步  点击选项卡显示对应的选项内容   点击后再显示，故第二步写在点击处
+            // *要点   使下面的显示内容与选项卡一一对应  给上面的 选项卡添加自定义属性 编号
+            // 显示下面的模块
+            var index = this.getAttribute('data-index');
+            console.log(index);
+            // 再次使用排他思想
+            for (var j = 0; j < item.length; j++) {
+                item[j].style.display= 'none';
+            }
+            item[index].style.display = 'block';
+        } 
+    }
+
+
+</script>
+</body>
+</html>

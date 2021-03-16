@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS高级技巧</title>
+    <link rel="stylesheet" href="../../font/font_2099015_z5uhbhlgbqn/iconfont.css">
+
+    <style>
+        /* 精灵图 */
+        .box1 {
+            width: 60px;
+            height: 60px;
+            background: url("../../img/King.png");
+            background-position: -182px 0;
+            margin: 100px auto;
+        }
+        .box2 {
+            width: 240px;
+            height: 130px;
+            background: url("../../img/King.png");
+            background-position: 0 -220px;
+            margin: 200px auto;
+        }
+        .iconfont {
+            font-size: 60px;
+            display: inline;
+        }
+
+       /* CSS三角
+            定义一个长宽为0且透明的盒子，给某一个边加颜色，即得到一个三角形
+            width: 0;
+            height: 0;
+            border: 20px solid transparent;
+            border-left-color: #3664a2;
+          半三角
+            将盒子的两侧的边框设为透明
+       */
+        .box3 {
+            position: relative;
+            width: 300px;
+            height: 150px;
+            background-color: #0086b3;
+
+        }
+        .box3 span {
+            position: absolute;
+            right: -40px;
+            bottom: 55px;
+            width: 0;
+            height: 0;
+            border: 20px solid transparent;
+            border-left-color: #3664a2;
+        }
+        .box3 i {
+            width: 0;
+            height: 0;
+            border-color: red transparent transparent transparent;
+            border-style: solid;
+            border-width: 15px 15px 0 0;
+        }
+        /*
+
+            * 鼠标样式
+                  cursor: pointer(小手)/move(移动 十字架)/text(文本 I)/not-allowed(禁止 ∅)/default(默认 箭头)
+
+            * 行内块和文字居中对齐
+                vertical-align: baseline(默认 基线对齐)/top(顶端对齐)/middle(居中对齐)/bottom(底部对齐)
+                   * 只针对于行内元素或者行内块元素
+
+            * 溢出文字 省略号显示
+                  1、单行
+                       将文字强制一行显示
+                       white-space: nowrap;
+                       将溢出部分隐藏
+                       overflow-hidden;
+                       文字溢出用省略号代替
+                       text-overflow: ellipsis;
+                  2、多行
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      弹性伸缩盒子模型显示
+                      display: -webkit-box;
+                      限制一个块级元素显示的文本行数
+                      -webkit-line-clamp: 2;
+                      设置或检索伸缩合对象的子元素的排列方式
+                      -webkit-box-orient: vertical;
+
+      */
+        .nav {
+            width: 150px;
+            height: 100px;
+            background-color: #b3d4fc;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .nav1 {
+            width: 150px;
+            height: 45px;
+            background-color: #fcb3ca;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="box1">
+    精灵图
+</div>
+<div class="box2"></div>
+<hr />
+<div class="iconfont icon-bear"> </div>
+<div class="iconfont icon-angel"> </div>
+<div class="iconfont icon-bells"> </div>
+<div class="iconfont icon-cabin"> </div>
+<hr />
+<div class="box3">
+    <span></span>
+    <i></i>
+</div>
+<hr />
+<ul>
+    <li style="cursor: default">鼠标样式</li>
+    <li style="cursor: pointer">鼠标样式</li>
+    <li style="cursor: move">鼠标样式</li>
+    <li style="cursor: text">鼠标样式</li>
+    <li style="cursor: not-allowed">鼠标样式</li>
+</ul>
+<hr />
+<div class="nav">请检查网络电缆是否已插好。</div>
+<div class="nav1">
+    请检查网络电缆是否已插好。
+    请确保你不在飞行模式下。
+</div>
+</body>
+</html>

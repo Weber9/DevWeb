@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS</title>
+    <style>
+        /*  复合选择器
+               * 后代选择器： 语法： (类名) 元素1 元素2 { 样式 }  只改变 元素2 的样式  1和2可以任意基础选择器
+                      元素2必须是元素1的后代  例：ul li    只改变 元素1 下 元素2 的样式
+               * 子元素选择器：语法：元素1>元素2 { 样式 }
+                      元素1是父级，元素2是子集； 必须是”亲儿子“ 距父级元素最近的元素
+               * 并集选择器：将多个标签改为同一个样式  语法：元素1,元素2 { 样式 }   # 竖着写
+               * 伪类选择器：给某些选择器添加特殊效果
+                    * 链接伪类选择器
+                          a:link   选择从未被访问的链接
+                          a:visited   已被访问的链接
+                          a:hover  当鼠标悬停在链接上时
+                          a:active  活动标签，鼠标按下并未弹起时
+                    * focus伪类选择器   用于获取光标的表单元素   一般用于 input
+                          语法： 元素:focus
+
+                */
+        /* 后代选择器 */
+        ol li {
+            color: #59ff00;
+            font-size: 20px;
+        }
+
+        ol li a {
+            color: red;
+            font-size: 15px;
+        }
+
+        .nav li {
+            color: blue;
+            font-size: 12px;
+        }
+        /* 子元素选择器 */
+        .nav1 > a {
+            color: red;
+            font-size: 15px;
+        }
+        /* 并集选择器 */
+        div,
+        p,
+        .baby>li {
+            color: red;
+        }
+        /* 链接伪类选择器 */
+        a:link {
+            color: red;
+            text-decoration: none;
+        }
+        a:visited {
+            color: #000;
+        }
+        a:hover {
+            color: blue;
+            text-decoration: underline;
+        }
+        a:active {
+            color: #59ff00;
+        }
+        input:focus {
+            background-color: coral;
+            color: navy;
+        }
+    </style>
+</head>
+<body>
+<h1>后代选择器</h1>
+<ol>
+    <li>后代选择器</li>
+    <li>后代选择器</li>
+    <li>后代选择器</li>
+    <li><a href="#">变色</a></li>
+</ol>
+<ul>
+    <li>后代选择器</li>
+    <li>后代选择器</li>
+    <li>后代选择器</li>
+</ul>
+<ul class="nav">
+    <li>后代选择器 样式2</li>
+    <li>后代选择器 样式2</li>
+    <li>后代选择器 样式2</li>
+</ul>
+<hr/>
+<h1>子元素选择器</h1>
+<div class="nav1">
+    <a href="#">我是儿子</a>
+    <p>
+        <a href="#">我是孙子</a>
+    </p>
+</div>
+<hr/>
+<h1>并集选择器</h1>
+<div>小猪佩奇</div>
+<p>佩奇</p>
+<span>乔治</span>
+<ul class="baby">
+    <li>玛卡巴卡</li>
+    <li>叮叮车</li>
+</ul>
+<hr />
+<h1>链接伪类选择器</h1>
+<a href="www.xxxxxxx.com">魔仙堡</a> <br />
+<a href="#">李云龙</a>
+<h1>focus伪类选择器</h1>
+<input type="text">
+<input type="text">
+<input type="text">
+</body>
+</html>

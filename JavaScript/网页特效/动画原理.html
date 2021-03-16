@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画原理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            position: absolute;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background-color: #e7e1cd;
+        }
+        span {
+            display: block;
+            position: absolute;
+            top: 200px;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: #0086b3;
+
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <span></span>
+    <script>
+
+        /*
+            动画原理：
+                1、获得盒子当前位置
+                2、让盒子在当前位置加 移动距离
+                3、利用定时器不断重复此操作
+                4、加一个结束定时器的条件
+                5、元素必须要加 定位 通过 left 值进行变更元素位置
+
+            缓动动画原理(先快后慢)：每次移动的距离比上一次的距离少一点
+                1、设置步长   Math.ceil((目标值 - 现在的位置) / 10)   向上取整
+                2、将元素的位置 + 步长 形成 缓动动画
+        */
+
+        // 简单函数封装
+        function animate(obj, target,callback/*回调函数，当元素移动完成后，再进行其它操作*/) {   //  obj 运动对象   target 运动距离
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                var step = (target - obj.offsetLeft) / 10  ;  // 设置步长
+                step = step > 0 ? Math.ceil(step):Math.floor(step);
+                if(obj.offsetLeft === target) {
+                    clearInterval(obj.timer);
+                    if(callback){
+                        callback();
+                    }
+                }
+
+                obj.style.left = obj.offsetLeft + step + 'px';
+            },50);
+        }
+
+        var divs = document.querySelector('div');
+        var span = document.querySelector('span');
+
+        animate(divs,400);
+        animate(span,300,function () {
+            span.style.backgroundColor = 'red';
+        });
+    </script>
+</body>
+</html>

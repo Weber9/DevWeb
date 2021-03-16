@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="../jQuery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul li {
+            list-style: none;
+        }
+
+        .nav li {
+            float: left;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: pink;
+            border: 0px gray solid;
+        }
+        .nav_c {
+            display: none;
+        }
+        .nav_c li {
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: pink;
+            border: 0px gray solid;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>奥里给</li>
+    <li>奥里给</li>
+    <li>奥里给</li>
+    <li>奥里给</li>
+    <li>奥里给</li>
+</ul>
+<hr>
+
+<ul class="nav">
+    <li>
+        奥
+        <ul class="nav_c">
+            <li>奥</li>
+            <li>奥</li>
+            <li>奥</li>
+        </ul>
+    </li>
+    <li>
+        里
+        <ul class="nav_c">
+            <li>利</li>
+            <li>利</li>
+            <li>利</li>
+        </ul>
+    </li>
+    <li>
+        给
+        <ul class="nav_c">
+            <li>给</li>
+            <li>给</li>
+            <li>给</li>
+        </ul>
+    </li>
+</ul>
+
+<script>
+    // 隐式迭代
+    /*var lis = document.querySelectorAll('li');
+    console.log(lis);
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].style.backgroundColor = 'pink';
+    }*/
+    /*$(function (){
+        $("li").css('background', 'skyblue')
+    })*/
+
+    // 下拉菜单
+    $(function () {
+        // $(".nav>li").mouseover(function () {
+        //     // show()  显示元素
+        //     $(this).children("ul").slideDown(200);
+        // })
+        // $(".nav>li").mouseout(function () {
+        //     // hide()  隐藏元素
+        //     $(this).children("ul").slideUp(200);
+        // })
+
+        // 2、事件触发   hover(鼠标经过触发的函数,鼠标离开触发的函数)
+        // $(".nav>li").hover(function () {
+        //     $(this).children("ul").slideDown(200);
+        // },function () {
+        //     $(this).children("ul").slideUp(200)
+        // })
+
+        // 3、复合写法
+        $(".nav>li").hover(function () {
+            $(this).children("ul").slideToggle(500);
+        })
+    })
+</script>
+</body>
+</html>
