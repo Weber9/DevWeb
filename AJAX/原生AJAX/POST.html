@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX GET 请求</title>
+    <style>
+        #result {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000000;
+        }
+    </style>
+</head>
+<body>
+    <button>点击发送请求</button>
+    <div id="result"></div>
+<script>
+    let btn = document.querySelector('button');
+    var result = document.querySelector('#result');
+    btn.onclick= function () {
+        // 创建对象
+        let xhr = new XMLHttpRequest();
+        // 初始化 设置请求方法和url
+        xhr.open('POST','http://127.0.0.1:8080/server');
+        // 发送
+        xhr.send();
+        // 事件绑定  处理服务器返回结果
+        // readystate XML 对象属性
+        // 表示状态 0(未初始化)  1(open方法调用完毕) 2(send方法调用完毕)
+        //        3(服务端返回部分结果)   4(服务端返回所有结果)
+        xhr.onreadystatechange = function () {
+            // 判断  服务端返回所有结果
+            if(xhr.readyState === 4){
+                // 判断响应状态码  200 404 403 401 500
+                if(xhr.status >= 200 && xhr.status < 300){
+                    // 处理结果
+                    // 响应行
+                    // console.log(xhr.status); // 状态码
+                    // console.log(xhr.statusText); // 状态字符串
+                    // // 所有响应头
+                    // console.log(xhr.getAllResponseHeaders());
+                    // // 响应体
+                    // console.log(xhr.response);
+                    result.innerHTML = xhr.response;
+                }
+            }
+        }
+
+    }
+</script>
+</body>
+</html>

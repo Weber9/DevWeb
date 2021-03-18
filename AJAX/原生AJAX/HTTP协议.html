@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTTP协议</title>
+</head>
+<body>
+    <!--
+        HTTP(hypertext transport protocol)协议【超文本传输协议】规定了浏览器和万维网服务之间互相通信的规则
+
+        请求报文
+            行           post   /url(请求字符串)   HTTP协议版本
+            头           host: xxx.com
+                         Cookie: name=xx
+                         Content-type: application/x-www.form-urlencoded
+                         User-Agent: chrome 83
+            空行
+            体           username=admin&&password=admin
+
+        响应报文
+            行           协议版本    响应状态码   响应状态字符串
+            头           Context-Type: text/html;charset=utf-8
+                         Content-length: 2048
+                         Content-encoding: gzip
+            空行
+            体           html内容
+
+
+
+    -->
+</body>
+</html>

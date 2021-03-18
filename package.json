@@ -1,0 +1,28 @@
+{
+  "name": "Web",
+  "version": "1.0.0",
+  "description": "npm-install-package",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "main": "index.js",
+  "devDependencies": {
+    "@types/express": "^4.17.11"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Weber9/DevWeb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Weber9/DevWeb/issues"
+  },
+  "homepage": "https://github.com/Weber9/DevWeb#readme",
+  "private": true
+}
