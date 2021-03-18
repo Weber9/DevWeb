@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AJAX GET 请求</title>
+    <title>AJAX POST 请求</title>
     <style>
         #result {
             width: 200px;
@@ -22,8 +22,11 @@
         let xhr = new XMLHttpRequest();
         // 初始化 设置请求方法和url
         xhr.open('POST','http://127.0.0.1:8080/server');
+        // 设置请求头
+        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+        xhr.setRequestHeader('name','AJAX demo'); // 自定义头信息，需要在js文件中设置
         // 发送
-        xhr.send();
+        xhr.send("我是请求体");  // 设置请求体
         // 事件绑定  处理服务器返回结果
         // readystate XML 对象属性
         // 表示状态 0(未初始化)  1(open方法调用完毕) 2(send方法调用完毕)

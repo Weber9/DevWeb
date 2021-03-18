@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>重复请求问题</title>
+</head>
+<body>
+    <button>点击发送</button>
+
+    <script>
+        let btn = document.querySelector('button');
+        let x = null;
+        // 添加表示  判断上一个任务是否结束
+        let isStart = false;  // 是否正在发送AJAX请求
+        // 发送请求
+        btn.onclick =function () {
+            if(isStart) x.abort();// 如果正在发送，则取消该请求，创建一个新的请求
+            x = new XMLHttpRequest();
+            isStart = true;
+            x.open('GET','http://127.0.0.1:8080/delay');
+            x.send();
+            x.onreadystatechange = function () {
+                if(x.readyState === 4) {
+                    isStart = false;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
