@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>解决跨域</title>
+</head>
+<body>
+    <!--
+        同源策略：一种安全策略   AJAX 默认遵循
+           同源：协议、域名、端口号 比喻完全一致
+           违背同源策略就是跨域
+
+        解决跨域
+           CORS(Cross-Origin-Resource Sharing)    跨域资源共享
+           使用：
+            服务端配置：
+                指示请求的资源能共享给哪些域
+                response.setHeader('Access-Control-Allow-Origin','*');
+
+                用在对预请求的响应中，指示实际的请求中可以使用哪些 HTTP 头
+                response.setHeader('Access-Control-Allow-Headers','*');
+
+                指定对预请求的响应中，哪些 HTTP 方法允许访问请求的资源
+                response.setHeader('Access-Control-Allow-Methods','*');
+    -->
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="nav">
+    <h2 :style="{fontSize: '50px'}">{{fullName}}</h2>
+    <h1>{{allName}}</h1>
+  </div>
+
+  <script>
+    /*
+      计算属性
+        在 computed 属性对象中定义计算属性的方法
+        在页面中使用{{方法名}}来显示计算结果
+      监视属性
+        通过 VM 对象的 $watch() 或 watch 配置来监视指定的属性
+        当属性变换时，回调函数自动调用，在函数内部进行计算
+      计算属性高级
+        通过 getter/setter 实现对属性数据的显示和监视
+        计算属性存在缓存，多次读取只执行一次 getter 计算
+    */
+
+    let vm = new Vue({
+      el: '#nav',
+      data: {
+        firstName: '老八',
+        lastName: '吃奥里给',
+        books: [
+          {id: 1 , name: '李云龙' , age: 20},
+          {id: 2 , name: '魏和尚' , age: 50},
+          {id: 3 , name: '孔捷' , age: 40},
+          {id: 4 , name: '楚云飞' , age: 70},
+        ]
+      },
+      computed : {
+        fullName: function () {
+          return this.firstName + ' ' + this.lastName;
+        },
+        allName: function () {
+          let aName = [];
+          for (let i = 0; i < this.books.length; i++) {
+            aName[i] = this.books[i].name;
+          }
+          return aName;
+        }
+
+
+
+      }
+    });
+  </script>
+</body>
+</html>

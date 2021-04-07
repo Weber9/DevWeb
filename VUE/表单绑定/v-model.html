@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="nav">
+    <input type="text" v-model.lazy="message">{{message}}
+    <hr>
+    <input type="checkbox" id="beijing" value="北京" v-model="checked">北京
+    <input type="checkbox" id="shanghai" value="上海" v-model="checked">上海
+    <input type="checkbox" id="guangzhou" value="广州" v-model="checked">广州
+    {{checked}}
+    <hr>
+    <select v-model="selected">
+      <option disabled value="">请选择</option>
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+  </div>
+
+  <script>
+    /*
+      v-model   在表单元素<input>、<textarea>、<select> 创建双向数据绑定。
+                根据控件类型自动选取正确的方法来更新元素
+                忽略所有表单元素的初始值，将Vue实例数据作为数据来源
+
+      修饰符
+           v-model.lazy          当表单失去焦点时，数据才繁盛改变
+           v-model.number        将输入值转为数值类型
+           v-model.trim          自动过滤用户输入的首尾空白字符
+
+
+    */
+    let vm = new Vue({
+      el: '#nav',
+      data: {
+        message: '啊哈哈哈哈哈',
+        checked: [],
+        selected: '',
+
+      }
+    })
+
+  </script>
+</body>
+</html>

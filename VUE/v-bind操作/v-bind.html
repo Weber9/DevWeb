@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../js/vue.js"></script>
+
+  <style>
+    .active {
+      color: #a71d5d;
+    }
+  </style>
+</head>
+<body>
+  <div id="nav">
+    <img v-bind:src="imageURL" alt="">
+    <a v-bind:href="aURL">B站</a>
+    <!--语法糖 简写-->
+    <img :src="imageURL" alt="">
+    <a :href="aURL">B站</a>
+    <!-- 动态绑定 class -->
+    <h1 :class="getClass()">{{message}}</h1>
+    <button v-on:click="btnClick">切换颜色</button>
+    <!-- 动态绑定 style -->
+    <h2 :style="{fontSize:'50px', backgroundColor: final}">{{message}}</h2>
+  </div>
+  <script>
+    /*
+      v-bind  动态绑定属性
+      简写：  :属性
+      动态绑定属性：
+          动态绑定class(对象语法):   :class="{ key(类名) : value(布尔值 表示是否设置)}"
+          动态绑定style(对象语法):   :class="{ key(CSS属性名称) : value(属性值)}"
+    */
+
+    let vue = new Vue({
+      el: '#nav',
+      data: {
+        imageURL: 'https://pics5.baidu.com/feed/9213b07eca8065387725bdd91f4a984caf348248.jpeg?token=09fb47eb29c0760c37c901d2b6b5c5c9',
+        aURL: 'https://www.bilibili.com/',
+        message: '奥里给',
+        isActive: true,
+        isLine: true,
+        final: 'green'
+      },
+      methods: {
+        btnClick:function() {
+          this.isActive = !this.isActive;
+        },
+        getClass: function () {
+          return {active:this.isActive , line:this.isLine};
+        }
+
+      }
+
+    })
+  </script>
+</body>
+</html>

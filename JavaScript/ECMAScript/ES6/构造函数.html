@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数</title>
+</head>
+<body>
+    <script>
+        /*
+            构造函数：一种特殊函数，主要用来初始化对象
+                1、构造函数用于创建某一类对象，器其首字母要大写
+                2、构造函数要和 new 一起使用才有意义
+
+            new 在执行时会做四件事情
+              1、在内存中创建一个新对象
+              2、让this指向这个新的对象
+              3、执行构造函数里面的代码，给这个新对象添加属性和方法
+              4、返回这个新对象(构造函数不需要 return)
+
+            静态成员：在构造函数上添加的成员成为静态成员，只能有构造函数本身来访问
+            实例成员：在构造函数内部创建的对象称为实例成员，只能由实例化的对象来访问
+
+            原型  prototype 一个对象  构造函数通过原型分配的函数时所有对象共享的
+                每一个构造函数都有一个 prototype 属性。将一些共有方法定义在 prototype对象上，所有的对象的实例就可以共享这些方法
+                Array.prototype.fn() = function() {}
+                Array.prototype = {}    数组和字符串的内置对象不能使用此方法(会覆盖数组和字符串内置的所有函数)
+
+            对象原型 _proto_   对象都会有一个属性，指向构造函数的 prototype 原型对象
+               * _proto_对象原型和原型对象prototype是等价的
+               * _proto_对象原型的意义就在于为对象的查找机制提供一个方向，并非标准属性，实际开发中不能使用这个属性
+
+            constructor  构造函数  主要用于记录该对象引用与哪个构造函数，它可以让原型对象重新指向原来的构造函数
+
+            JavaScript的成员查找机制   原型链
+              ① 当访问一个对象的属性(包括方法)时，首先查找这个对象自身有没有该属性
+              ② 如果没有就查找它的原型(也就是_proto_指向的prototype原型对象)
+              ③ 如果还没有就查找原型对象的原型(Object的原型对象)
+              ④ 一次类推一直找到Object为止(null)
+              ⑤ _proto_对象原型的意义就在于为对象查找机制提供一个方向，或者说一个路线
+
+
+
+        */
+
+        function Star(uname,age) {
+            this.uname = uname;
+            this.age = age;   //  实例化对象
+            /*this.sing = function() {
+                console.log("唱歌");
+            }*/
+        }
+        // 原型
+        /*Star.prototype.sing = function () {
+            console.log("唱歌");
+        }*/
+        Star.prototype = {    // 数组和字符串的内置对象不能使用此方法  只能用 Array.prototype.fn() = function() {}
+            // 如果我们修改了原来的原型对象，给原型对象赋值的是一个对象，则必须手动利用 constructor 指回原来的构造函数
+            constructor: Star,
+            sing : function() {
+                console.log("唱歌");
+            },
+            moive : function () {
+                console.log("演电影");
+            }
+        }
+
+        var ldh = new Star("刘德华",18);
+        var zxy = new Star("张学友",20);
+        console.log(ldh);
+        ldh.sing();
+        ldh.moive()
+        zxy.sing();
+        zxy.moive();
+        Star.sex = '男';   //  静态成员
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>set 数据结构</title>
+</head>
+<body>
+    <script>
+        /*
+            set 数据结构    类似于数组，但是成员都是唯一，没有重复的值
+              const s = new Set() /  const s = new set(x,y,z)
+              方法：
+                  add(value): 添加某个值，返回Set结构本身
+                  delete(value): 删除某个值，返回一个布尔值，表示删除是否删除成功
+                  has(value): 返回一个布尔值，表示该值是否为Set的成员
+                  clear(): 清除所有成员，没有返回值
+        */
+
+        const s = new Set();
+        s.add(1).add(2).add(3);
+        s.forEach(value => {
+            console.log(value);
+        });
+        s.clear();
+        console.log(s);
+    </script>
+</body>
+</html>

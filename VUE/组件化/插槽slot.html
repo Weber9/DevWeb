@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <hr>
+    <cpn><button>哈哈哈</button></cpn>
+    <hr>
+    <cpn>
+      <i>奥里给</i>
+      <p>淦就完了</p>
+      <div>家人们</div>
+    </cpn>
+    <hr>
+    <cpn><h3 slot="havename">具名插槽</h3></cpn>
+    <hr>
+
+    <cpn2></cpn2>
+
+    <cpn2>
+      <!-- 获取 子组件 里对应的值-->
+      <template slot-scope="slot">
+        <span>{{slot.data.join(' - ')}}</span>
+      </template>
+    </cpn2>
+  </div>
+  <!-- 自定义组件 -->
+  <template id="cpn">
+    <div>
+      <!-- 插槽 -->
+      <slot>我是默认值</slot>
+      <!-- 具名插槽 -->
+      <slot name="havename">我是具名插槽</slot>
+    </div>
+  </template>
+
+  <template id="cpn2">
+    <div>
+      <slot :data="movies">
+        <ul>
+          <li v-for="items in movies">{{items}}</li>
+        </ul>
+      </slot>
+    </div>
+  </template>
+  <script>
+    /*
+      插槽： 自定义往组件内添加HTML标签
+        使用:  <slot>[默认值]</slot>
+
+      具名插槽：具有 name 属性的 插槽
+        更改 具名插槽 内容，必须给标签加上对应name值  slot='name'
+
+      父组件模板的所有东西都会在父级作用域内编译
+      子组件模板的所有东西都会在自己作用域内编译
+
+      作用域插槽：
+        在父组件里面自己设置 子组件模板 的样式
+          1、slot 设置动态数据 获取子组件的数据 :data='子数据名'
+          2、在组件中传入数据 用 <template slot-scope="slot"> 包裹
+          3、获取数据   slot.data
+    */
+    const vm = new Vue({
+      el: '#app',
+      components: {
+        // 注册组件
+        cpn: {
+          template: '#cpn',
+        },
+        cpn2: {
+          template: '#cpn2',
+          data() {
+            return {
+              movies: ['第十回','第十一回','第十二回','第十三回'],
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

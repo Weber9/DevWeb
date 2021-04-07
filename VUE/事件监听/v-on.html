@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="nav">
+    <h1>{{counter}}</h1>
+    <!--<button v-on:click="inc">+</button>
+    <button v-on:click="sub">-</button>-->
+    <!-- 语法糖 -->
+    <button @click="inc">+</button>
+    <button @click="sub">-</button>
+    <!-- 获取浏览器event对象 $event-->
+    <button @click="btnEvent(a,b,$event)">获取event对象</button>
+    <br>
+    <form action="baidu">
+      <input type="text" @keyup.enter="input">
+      <input type="submit" value="跳转" @click.prevent="submitC">
+    </form>
+
+  </div>
+
+
+  <script>
+    /*
+      v-on  监听用户发生的事件(绑定事件监听器)
+      缩写：  @
+      参数：  event
+      修饰符：
+        event.stop    阻止事件冒泡
+        event.prevent   阻止默认行为   例如 form 表单 自动提交
+        event.keyCode(键Ascii码)|event.keyAlias(键名称)   当事件是特定键时触发
+        event.native    监听组件根元素的原生事件
+        event.once      只能触发一次回调
+    */
+
+    let vm = new Vue({
+      el: '#nav',
+      data: {
+        counter: 0,
+      },
+      methods: {
+        inc() {
+          this.counter++;
+        },
+        sub() {
+          this.counter--;
+        },
+        btnEvent(a,b,event) {
+          console.log(a,b,event);
+        },
+        input() {
+          console.log('keyup')
+        },
+        submitC() {
+          console.log('不跳转');
+        }
+      }
+    });
+  </script>
+</body>
+</html>

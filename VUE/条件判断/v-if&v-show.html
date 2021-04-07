@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="nav">
+    <h2  v-if="isShow">
+      <div>哈哈哈哈</div>
+      <div>哈哈哈哈</div>
+      <div>哈哈哈哈</div>
+      <div>哈哈哈哈</div>
+      <div>哈哈哈哈</div>
+      {{message}}
+    </h2>
+    <h1 v-else>当isShow为false显示</h1>
+  </div>
+
+  <script>
+    /*
+      v-if   判断是否渲染或摧毁元素内容  取值 true|false   当值为false，直接删除节点
+      v-show  判断是否渲染或摧毁元素内容  取值 true|false   当值为false，给元素绑定 display:none 隐藏元素
+    */
+    let vm = new Vue({
+      el: '#nav',
+      data: {
+        message: '淦淦淦',
+        isShow: true,
+      }
+    });
+  </script>
+</body>
+</html>

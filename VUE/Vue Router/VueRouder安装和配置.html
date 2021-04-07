@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  /*
+     安装 vue-router
+        npm install vue-router --save
+     在模块化工程中使用它
+        1、导入路由对象
+            import { createRouter, createWebHashHistory } from 'vue-router'
+            // 路由懒加载    打包文件变小 用户请求效率更高
+              const Home = () => import('../src/components/Home.vue')
+              const About = () => import('../src/components/About.vue')
+        2、创建路由实例，并传入路由映射配置
+            const routes = [{ path: '/home',component: Home ...}]
+            const router = new createRouter({
+              history: createWebHashHistory(),  // 将 路径方式 改变为 HTML5 方式  默认为 hash方式
+              routes
+
+            })
+            export default router
+
+        3、在Vue实例中挂载创建的路由实例
+
+      使用vue-router的步骤
+        1、创建路由组件
+        2、配置路由映射: 组件和路径映射关系
+        3、使用路由: 通过<router-link> 和 <router-view>
+            <router-link> vue-router内置标签，会被渲染成 <a> 标签
+            <router-view> 根据当前路径，动态渲染出不同的组件
+            路由切换时，切换的是 <router-view> 挂载的组件，其它内容不会变化
+
+        <router-link> 属性
+            1、to：  指定跳转路径
+            2、tag： 指定该标签渲染成什么组件
+            3、replace： replace不会留下history记录，不能返回到上一个界面
+            4、active-class：当该标签对应的路由匹配成功时，会自动给当前元素设置一个 router-link-active 的class属性
+                            设置active-class可以修改默认的名称
+
+  */
+</script>
+</body>
+</html>

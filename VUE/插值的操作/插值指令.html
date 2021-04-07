@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h2>{{url}}</h2>
+    <h2 v-html="url"></h2>
+  </div>
+
+  <script>
+    /*
+      v-on     监听事件
+      v-once   表示元素和组件只渲染一次，不会随着数据的改变而改变
+      v-html   将html格式进行解析，并且显示队形内容
+      v-pre    跳过编译过程将最原始的信息显示出来
+
+    */
+
+    var vue = new Vue({
+      el: '#app',
+      data: {
+        url: '<a href="https://www.baidu.com">百度一下</a>'
+      },
+
+    });
+  </script>
+</body>
+</html>

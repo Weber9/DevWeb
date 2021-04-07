@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios-发送请求</title>
+    <script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+</head>
+<body>
+    <button>GET</button>
+    <button>POST</button>
+    <button>通用型方法</button>
+
+    <script>
+        /*
+            axios中的AJAX
+                get请求    $.get(url,[config])
+                post请求   $.post(url,[data],[config])
+                    * url: 请求的URL地址
+                    * data: 请求体
+                    * config: 配置
+        */
+
+        let btn = document.querySelectorAll('button');
+
+        // // 配置 baseURL
+        // axios.defaults.baseUrl = 'http://127.0.0.1:8080';
+        // GET 方法
+        btn[0].onclick = function () {
+            axios.get('http://127.0.0.1:8080/axios-server',{
+                // url参数
+                params: {
+                    id : 100,
+                    vip : 7
+                },
+                // 请求头信息
+                header: {
+                    name : '李云龙',
+                    age : 20
+                }
+
+            }).then(value => {
+                console.log(value);   // 数据返回
+            });
+        }
+
+        // POST 方法
+        btn[1].onclick = function () {
+            axios.post('http://127.0.0.1:8080/axios-server', {
+                // 请求体
+                username : 'admin',
+                password : 'admin'
+            },{
+                // url
+                params : {
+                    id : 400 ,
+                    vip : 9
+                },
+                // 请求头参数
+                headers: {
+                    width : 200,
+                    height :200
+                }
+            }).then(value => {
+                console.log(value);
+
+            });
+        }
+
+        // 通用型方法
+        btn[2].onclick = function () {
+            axios({
+                // 请求方法
+                method : 'POST',
+                // url
+                url : 'http://127.0.0.1:8080/axios-server',
+                // url 参数
+                params : {
+                    id : 800,
+                    vip : 2
+                },
+                // 请求头信息
+                headers: {
+                    A : 2,
+                    B : 3
+                },
+                // 请求体参数
+                data : {
+                    user : '老八',
+                    password: '淦淦淦'
+                }
+            }).then(response => {
+                // 响应状态码
+                console.log(response.status);
+                // 响应状态字符串
+                console.log(response.statusText);
+                // 响应头信息
+                console.log(response.headers);
+                // 响应体
+                console.log(response.data);
+            });
+        }
+
+
+    </script>
+</body>
+</html>

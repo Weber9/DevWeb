@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <cpn ref="refcpn"></cpn>
+    <button @click="btnClick">按钮</button>
+    <cpn ></cpn>
+
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h1>我是子组件</h1>
+    </div>
+  </template>
+  <script>
+    /*
+      父组件访问方式：  父组件直接访问子组件
+          1、 $children     获得当前组件的子组件实例
+          2、 $refs
+            * ref 给元素或子组件注册引用信息    不要使用驼峰命名法
+            * $refs 获取通过 ref 注册的引用  未注册调用返回一个空对象
+    */
+
+
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        message: '哈哈哈哈'
+      },
+      methods: {
+        // $children
+        btnClick() {
+          // $children 方法
+          // console.log(this.$children);
+          // console.log(this.$children[0].showMessage());
+          // $refs
+          console.log(this.$refs);
+          console.log(this.$refs.refcpn);
+          console.log(this.$refs.refcpn.showMessage());
+        }
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          methods: {
+            showMessage(){
+              console.log('message')
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

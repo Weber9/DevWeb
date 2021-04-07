@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- 使用 组件 -->
+    <my-cpn></my-cpn>
+    <my-cpn></my-cpn>
+
+    <cpn></cpn>
+  </div>
+
+
+
+
+  <script>
+    /*
+      组件页面渲染需要添加到Vue对象中
+       注册组件的基本步骤
+      1、创建组件构造器      Vue.extend()
+      2、注册组件           Vue.component('注册标签名',组件构造器)
+      3、使用组件       在Vue实例作用范围内使用组件
+
+      模板分离写法：将HTML分离出来，然后挂在到对应的组件上
+      1、使用 <script type="text/x-template> 标签
+      2、使用 <template> 标签
+
+      使用驼峰命名法时，两个单词之间必须加上 -
+      使用 template 创建 HTML 节点必须只有一个根节点 所以创建时，用 <div></div> 包裹起来
+
+    */
+
+
+     // 创建组件构造器对象
+    const cpnC = Vue.extend({
+      template:   // 指定组件展示的 HTML 结构
+        `<div>
+          <h2>标题</h2>
+          <p>内容 喀喀喀喀喀喀</p>
+          <p>内容 哇哇哇哇哇哇</p>
+        </div>
+        `
+    });
+    // 注册组件
+    Vue.component('my-cpn',cpnC);
+
+    const vm = new Vue({
+      el: '#app',
+    })
+
+
+
+  </script>
+</body>
+</html>

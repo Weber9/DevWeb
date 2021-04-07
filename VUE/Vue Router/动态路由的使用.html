@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  /*
+    1、设置 path 属性
+      动态路径参数
+      例   path: '/user/:userId'   地址栏显示 userId
+          path: '/profile'   地址栏显示 profile
+
+    2、在App.vue 文件的 export属性中 设置 参数
+      例   data() { return { userId : '老八' } }
+
+    当匹配到一个路由时，参数值会被设置到 $route.params.xxx  可进行动态绑定
+
+    URL格式：
+       协议://主机:端口/路径?查询#片段
+       scheme://host:post/path?query#fragment
+     例 http://xxx.com/175/2603675.shtml
+
+    传递参数的方式    params 和 query
+
+      params 类型
+        * 配置参数格式： /router/:id
+        * 传递的方式：在path后面跟上对应的值
+        * 传递后形成的路径： /router/xxx
+
+      query 类型
+        * 配置路由格式：/router  普通配置
+        * 传递的方式：对象中使用key作为传递方式
+        * 传递后形成的路径： /router?id=xxx
+  */
+</script>
+</body>
+</html>

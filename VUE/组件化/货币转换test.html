@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+
+    <!-- 使用 组件-->
+    <cpn :cnumber1="number1"
+         :cnumber2="number2"
+         @changenum1="changenum1"
+         @changenum2="changenum2"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h1>父属性 props: {{cnumber1}}</h1>
+      <h1>人民币: {{dnumber1}}</h1>
+      <!--<input type="text" v-model="dnumber1">-->
+      <input type="text" :value="dnumber1" @input="inpNum1">
+      <h2>父属性 props:{{cnumber2}}</h2>
+      <h1>日元: {{dnumber2}}</h1>
+      <!--<input type="text" v-model="dnumber2">-->
+      <input type="text" :value="dnumber2" @input="inpNum2">
+    </div>
+  </template>
+
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        number1: 0,
+        number2: 0
+      },
+      methods: {
+        changenum1(value) {
+          this.number1 = parseInt(value);
+        },
+        changenum2(value) {
+          this.number2 = parseInt(value);
+        }
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          props: {
+            cnumber1: Number,
+            cnumber2: Number
+          },
+          data() {
+            return {
+              // 父传子  将父组件 cnumber 传给子组件 dnumber
+              dnumber1 : this.cnumber1,
+              dnumber2 : this.cnumber2
+            }
+          },
+          methods: {
+            // 子传父
+            inpNum1(event) {
+              // 将 input 的值 赋给 dnumber
+              this.dnumber1 = event.target.value;
+              // 子传父  发出一个事件，修改父组件里的值
+              this.$emit('changenum1',this.dnumber1);
+
+              // 同时修改 number2 的值
+              this.dnumber2 = this.dnumber1 * 16;
+              this.$emit('changenum2',this.dnumber2);
+            },
+            inpNum2(event) {
+              this.dnumber2 = event.target.value;
+              this.$emit('changenum2',this.dnumber2);
+            }
+          }
+        }
+      }
+    })
+
+  </script>
+</body>
+</html>

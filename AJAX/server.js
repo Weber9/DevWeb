@@ -73,6 +73,40 @@ app.all('/jQuery-server',(request,response)=>{
 
 });
 
+// Axios服务
+app.all('/axios-server',(request,response)=>{
+    // 设置响应头   设置允许跨域
+    response.setHeader('Access-Control-Allow-Origin','*');
+    // 可以自定义头信息
+    response.setHeader('Access-Control-Allow-Headers','*');
+    // 响应一个数据
+    const data = {
+        name : '奥里给'
+    };
+    // 将对象转换为字符串
+    let str = JSON.stringify(data);
+    // 设置响应体
+    response.send(str);
+
+});
+
+// Fetch服务
+app.all('/fetch-server',(request,response)=>{
+    // 设置响应头   设置允许跨域
+    response.setHeader('Access-Control-Allow-Origin','*');
+    // 可以自定义头信息
+    response.setHeader('Access-Control-Allow-Headers','*');
+    // 响应一个数据
+    const data = {
+        name : '奥里给'
+    };
+    // 将对象转换为字符串
+    let str = JSON.stringify(data);
+    // 设置响应体
+    response.send(str);
+
+});
+
 
 
 // 监听端口启动服务

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+
+  </div>
+
+  <template id="Cpn">
+    <div>
+      <h1>计数: {{counter}}</h1>
+      <button @click="inc">+</button>
+      <button @click="dec">-</button>
+    </div>
+  </template>
+
+  <script>
+    /*
+       组件化定义数据时 应将数据定义称函数式而非对象式
+          函数在每次调用时返回的数据内存地址式不同的，不会影响多个空键
+          对象每次调用它的内存地址是相同的，一个更改全部更改
+    */
+
+
+    Vue.component('cpn',{
+      template: '#Cpn',
+      // 设置数据
+      data() {
+        return {
+          counter: 0
+        }
+      },
+      methods: {
+        inc() {
+          this.counter++;
+        },
+        dec() {
+          this.counter--;
+        }
+
+      }
+    })
+
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        message: '哈哈哈哈'
+      }
+
+    });
+
+  </script>
+</body>
+</html>

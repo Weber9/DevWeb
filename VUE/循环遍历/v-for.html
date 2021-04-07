@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="nav">
+    <!-- 遍历数组 -->
+    <li v-for="item in names" :key="item">{{item}}</li>  <!-- 获取数组元素-->
+    <h5>-----------</h5>
+    <li v-for="(item,index) in names" >{{index}}.{{item}}</li>  <!-- 获取索引(index) -->
+    <h5>-----------</h5>
+    <!-- 遍历对象-->
+    <li v-for="item in person">{{item}}</li>
+    <h5>-----------</h5>
+    <li v-for="(item,key) in person" >{{key}} : {{item}}</li>   <!-- 获取属性(key)-->
+    <h3>响应式操作</h3>
+    <button @click="">通过数组下标改变数组元素</button>不能
+    <hr>
+    <button @click="pushArray">插入内容 push</button>
+    <button @click="popArray">删除元素 pop</button>
+    <button @click="shiftArray">删除元素 shift</button>
+    <button @click="unshiftArray">插入元素 unshift</button>
+    <button @click="incSpliceArray">指定位置插入元素 splice</button>
+    <button @click="subSpliceArray">指定位置删除元素 splice</button>
+    <button @click="sortArray">数组排序 sort</button>
+    <button @click="reverseArray">数组反转 reverse</button>
+  </div>
+
+  <script>
+    /*
+      循环遍历
+        v-for   渲染一个列表
+          遍历数组
+             v-for = '(被迭代数组别名,索引[index]) in 原数组,'  例  v-for = 'item in names'  遍历names
+          遍历对象
+             v-for = '(value[属性值],name[属性名],index[索引]) in 遍历对象名'
+               例：  v-for = 'value in person'
+
+        当 v-for 渲染列表时，它默认使用 就地更新(将插入元素放到插入位置，原有元素和其后元素重新排列到后面) 策略，使顺序改变，增加服务器负担
+        解决：
+            使用 v-for 时，给对应元素或组件添加上一个 :key 属性,追踪每个节点的身份，重用和重新排序现有元素
+            用法：    :key = '数组 对应别名'
+
+        响应式： 当一些操作对元素进行改变时，页面上的元素也进行改变
+          不存在响应式操作：
+              通过数组下标修改数组元素
+
+          存在响应式操作：
+              1、 push('新增内容', ...)     将元素插入数组最后一位
+              2、 pop()     删除数组最后一位
+              3、 shift()   删除数组第一位
+              4、 unshift('新增内容', ...)    从数组头部插入元素
+              5、 splice(开始执行位置 , 更改元素个数  , 新增内容)   从某个位置 删除/插入 新元素
+              6、 sort()    对数组进行排序
+              7、 reverse()    将数组反转
+
+
+    */
+
+    let vm = new Vue({
+      el: '#nav',
+      data: {
+        names: ['李云龙','魏和尚','老八'],
+        person: {
+          id: 9527,
+          name: '卢本伟',
+          age: 28,
+        }
+      },
+      methods:{
+        pushArray() {
+          this.names.push('奥里给','楚云飞');
+        },
+        popArray() {
+          this.names.pop();
+        },
+        shiftArray() {
+          this.names.shift();
+        },
+        unshiftArray() {
+          this.names.unshift('卢本伟','马老师');
+        },
+        incSpliceArray() {
+          this.names.splice(2,0,'PDD');
+        },
+        subSpliceArray() {
+          this.names.splice(3,1);
+        },
+        sortArray() {
+          this.names.sort();
+        },
+        reverseArray() {
+          this.names.reverse();
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+
+<!-- 父组件 模板 -->
+<div id="app">
+  <mycpn :cmovies="movies" :cperson="person"></mycpn>
+
+  <!-- 父组件模板 监听 发射事件   在父组件中设置 执行函数-->
+  <cpn2 @itemsclick="cpnClick"></cpn2>
+</div>
+
+
+<!-- 子组件 模板 -->
+<template id="cpn">
+  <div>
+    {{cmovies}}
+    <h1>{{cperson}}</h1>
+  </div>
+</template>
+
+<template id="cpn2">
+  <div>
+    <button v-for="items in song" @click="btnClick(items)">{{items.singName}}</button>
+  </div>
+</template>
+<script>
+  /*
+
+    父传子：
+    prop 是子组件用来接受父组件传递过来的数据的一个自定义属性。
+    父组件的数据需要通过 props 把数据传给子组件，子组件需要显式地用 props 选项声明 "prop"
+    prop 是单向绑定的：当父组件的属性变化时，将传导给子组件，但是不会反过来。
+    动态绑定  v-bind    将父组件data传给子组件
+
+    props 数据验证
+      props 值方式：
+        1、字符串数组，数组中的字符串就是传递时的名称
+        2、对象，对象可以设置传递时的类型，也可以设置默认值等
+
+     子传父 (自定义事件)   当子组件需要向父组件传递数据时
+        1、在子组件中，通过 $emit(eventName,上传数据) 来触发事件
+        2、在父组件中，通过v-on来监听子组件事件
+
+  */
+
+  // 父传子 props
+  const cpn = {
+    template: '#cpn',
+    // props: ['cmovies']
+    props: {
+      cmovies: {
+        type: Array,
+      },
+      cperson: {
+        type: Object,
+        default() {   // 默认值
+          return {}
+        }
+      }
+    }
+  }
+
+  // 自定义事件  (子传父)
+  // 组件构造
+  const cpn2 = {
+    template: '#cpn2',
+    data() {
+      return {
+        song: [
+          {id: 1,singName: '奥里给',type: 'R&B'},
+          {id: 2,singName: 'thanks',type: 'folk'},
+          {id: 2,singName: 'sorry',type: 'RAP'}
+        ]
+      }
+    },
+    methods: {
+      btnClick(items){
+        // 向父组件发射数据
+        this.$emit('itemsclick',items);
+      }
+    }
+
+  }
+
+  // const cpn = Vue.extend({
+  //   template: `
+  //      <div>{{cmovies}}</div>
+  //   `,
+  //   props: ['cmovies']
+  // });
+  // Vue.component('mycpn',cpn)
+
+  // 父组件
+  const vm = new Vue({
+    el: '#app',
+    data: {
+      movies: ['月光男孩','水形物语','绿皮书'],
+      person: {
+        name: 'Jason',
+        age: 18,
+        sex: 'man'
+      }
+    },
+    components: {
+      // 注册组件
+      'mycpn' : cpn,
+      'cpn2': cpn2,
+    },
+    methods: {
+      cpnClick(items) {
+        console.log('cpnClick',items)
+      }
+    }
+
+  });
+</script>
+</body>
+</html>

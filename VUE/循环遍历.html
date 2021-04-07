@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="./js/vue.js"></script>
+</head>
+<body>
+  <div id="nav">
+    <!-- 遍历数组 -->
+    <li v-for="item in names">{{item}}</li>  <!-- 获取数组元素-->
+    <h5>-----------</h5>
+    <li v-for="(item,index) in names">{{index}}.{{item}}</li>  <!-- 获取索引(index) -->
+    <h5>-----------</h5>
+    <!-- 遍历对象-->
+    <li v-for="item in person">{{item}}</li>
+    <h5>-----------</h5>
+    <li v-for="(item,key) in person">{{key}} : {{item}}</li>   <!-- 获取属性(key)-->
+  </div>
+
+  <script>
+    let vm = new Vue({
+      el: '#nav',
+      data: {
+        names: ['李云龙','魏和尚','老八'],
+        person: {
+          id: 9527,
+          name: '卢本伟',
+          age: 28,
+        }
+      }
+    });
+  </script>
+</body>
+</html>

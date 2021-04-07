@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <h1>劳斯莱斯</h1>
+  <button>点击中奖</button>
+  <hr>
+  <h1>promise基本流程</h1>
+  <img src="promise机制.png" alt="">
+  <script>
+    /*
+      promise 介绍    ES6异步编程的新解决方案
+        语法上：promise是一个构造函数
+        功能上：promise对象用来封装一个异步操作并可以获取其 成功/失败 的结果值
+        优点：
+            1、指定回调函数更加灵活
+              promise: 启动异步任务 --> 返回promise对象 --> 给promise对象绑定回调函数(甚至可以在异步任务结束后指定多个)
+            2、支持链式调用，可以解决回调地狱问题
+              回调地狱：回调函数嵌套使用，外部回调函数异步执行的结果是嵌套的回调执行条件(回调函数一层套一层)
+                      不便于阅读、不便于处理
+              解决： promise 链式调用
+
+        promise 状态
+          实例对象中的一个属性    PromiseState
+          * pending  未决定的 (初始)
+          * resolved / fullfilled   成功
+          * rejected    失败
+
+          状态转变
+            pending --> resolved   成功转变     结果数据为 value
+            pending --> rejected   失败转变     结果数据为 reason
+            * 一个promise对象只能转变一次，无论成功还是失败，都只有一个结果数据
+            throw  抛出异常  也可以让 promise 状态转变
+              pending --> rejected
+
+        promise 对象的值
+          实例对象的另一个属性   PromiseResult
+          * 保存异步任务中 成功 resolved() / 失败 rejected()  的结果
+
+        Promise 形式实现
+        1、先封装 异步操作
+          resolve  解决     函数类型数据  成功时返回
+          reject   拒绝     函数类型数据  失败时调用
+          const p = new Promise(function(resolve,reject){
+                成功  执行 resolve([n])   将 promise状态(p) 设置为成功
+                失败  执行 reject([n])    将 promise状态(p) 设置为失败
+          })
+
+        2、调用 异步操作 处理结果   then()方法
+        p.then(function([value]){}(成功时的回调函数),
+              function([reason]){}(失败时的回调函数));
+
+        当执行器中为 同步任务 时，先该变promise状态再指定回调函数    直接调用，得到数据
+        当执行器中为 异步任务 时，先指定回调函数再改变promise状态     当状态发生改变时，回调函数调用得到数据
+
+        异常穿透：
+           * 当使用promise的then链式调用时，可以在最后指定失败的回调  catch()
+           * 前面任何操作除了异常，都会传到最后失败的回调处理
+
+        中断 promise 链
+           * 有且只有一个方法   在回调函数中返回一个 pendding 状态的 promise对象(new Promise(()=>{}))
+
+    */
+
+    function rand(m,n) {
+      // 生成随机数
+      return Math.ceil(Math.random() * (n - m + 1) + m - 1);
+    }
+    let btn = document.querySelector('button');
+    btn.addEventListener('click',function () {
+      // promise 实现
+      // 封装
+      const p = new Promise((resolve, reject) => {
+        // 设置定时器  1s 后公布中奖答案
+        setTimeout(function () {
+          let n = rand(1,100);
+          if(n < 30) {
+            resolve(n); // 成功 返回 resolve() 并传入 值 n
+          }else {
+            reject(n);  // 失败 返回 reject() 并传入 值 n
+          }
+        },1000);
+
+      });
+
+      // promise 实例对象
+      console.log(p);
+
+      // 实现
+      p.then((value)=>{
+        alert("恭喜中奖 号码为" + value);
+      },(reason)=> {
+        alert("谢谢惠顾 号码为" + reason)
+      });
+
+    })
+
+    const promise = new Promise((resolve,reject)=>{
+      resolve('ok');
+    });
+    promise.then(value => {
+      console.log(value);
+    }).then(value => {
+      // console.log(222);
+      return new Promise(() => {})   // 中断 promise 链
+    }).then(value => {
+      console.log(333);
+      // throw '淦，有问题'
+    }).catch(reason => {
+      console.warn(reason);
+    })
+
+
+
+  </script>
+</body>
+</html>

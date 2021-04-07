@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>初识Vue</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="nav">
+        {{message}}
+        <h1>{{name}}</h1>
+        {{movies}}
+        <ul>
+            <!-- 列表显示 -->
+            <li v-for="item in movies">{{item}}</li>
+        </ul>
+    </div>
+    <div id="app">
+        <h2>当前计数:{{counter}}</h2>
+        <!--<button v-on:click="counter++">+</button>-->
+        <!--<button v-on:click="counter">-</button>-->
+        <button v-on:click="add">+</button>
+        <button v-on:click="sub">-</button>
+    </div>
+
+    <script>
+        // 声明式编程
+        let vue = new Vue({
+            el: '#nav',   //  挂载管理元素(获取元素)
+            // 定义数据
+            data: {
+                message: 'Hello Vue!!!',
+                name: '奥里给',
+                movies: ['星际穿越','大话西游','盗梦空间']
+            },
+
+        });
+
+        let app = new Vue({
+            el: '#app',
+            data: {
+                counter: 0
+            },
+            // 定义方法
+            methods:{
+                add: function () {
+                    this.counter++;
+                },
+                sub: function () {
+                    this.counter--;
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
